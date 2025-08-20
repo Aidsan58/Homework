@@ -1,19 +1,44 @@
 #include "memberType.h"
 #include "bookType.h"
 
-void memberBookPurchase(memberType booksBought, memberType arr[]) {
+void memberBookPurchase(int index, memberType memberList[], bookType bookList[]) {
     bool purchasing = true;
     while (purchasing == true) {
+        std::string book;
+        int location;
+        std::cout << "Please enter the book you are purchasing: " << std::endl;
+        std::cin >> book;
+        bookSearch(book, bookList);
+        if (bookSearch == false) {
+            purchasing = false;
+        }
         
+        for (int k = 0; k < 1000; k++) {
+            if (bookList[k].title == book ||bookList[k].ISBN == book) {
+                location = k;
+                break;
+            }
+        }
 
+        std::cout << "The price of this book is" << bookList[location].price << std::endl;
+        memberList[index].booksBought += 1;
+    if (memberList[index].booksBought == 11) { // This operation checks to see if 11 books have been bought by a member. If it returns true, the discount is applied.
+                bookList[location].price = memberList[index].amountSpent / 10;
+                std::cout << "You have spent " << memberList[index].amountSpent << " dollars." << std::endl;
+                memberList[index].amountSpent = 0; // Resets the amount spent so we can continue to discount for every 11th book purchased.
+                memberList[index].booksBought = 0;
+                purchasing = false;
+            }
+        
+        memberList[index].amountSpent += bookList[location].price;
+        std::cout << "You have spent " << memberList[index].amountSpent << " dollars." << std::endl;
+        
 
         purchasing = false;
     }
     
     
-    if (arr[i].booksBought == 11) { // This operation checks to see if 11 books have been bought by a member. If it returns true, the discount is applied.
-
-        }
+   
 }
    
 
@@ -36,6 +61,20 @@ int main() {
 
     bookType bookList[1000];
     memberType memberList[500];
+    char answer;
+    int j = 0;
+
+    std::cout << "Welcome. Do you wish to claim a membership? Each member has to pay a $10 yearly membership fee and receives a 5 percent discount on each book purchased. y or n" << std::endl;
+    std::cin >> answer;
+    if (answer == 'y') { // If the user answers yes, they are added to the memberList roster, and charged ten dollars.
+        memberList[j].setName();
+        memberList[j].amountSpent += 10;
+        std::cout << "Successfully added user to member list." << std::endl;
+        memberBookPurchase(j, memberList, bookList);
+        j += 1;
+    }
+
+    regularBookPurchase();
 
 
     return 0;
