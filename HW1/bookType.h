@@ -37,7 +37,7 @@ bool bookSearch(std::string inquiry, bookType arr[]) { // This function can sear
     bool bookHere = true;        
     for (int i = 0; i < 1000; i++) {
                 if (arr[i].title == inquiry || arr[i].ISBN == inquiry) {
-                    std::cout << "The book you are searching for is located in this store." << std::endl; // I commented this out because I'm using it for a different purpose in exercise 14.
+                    // std::cout << "The book you are searching for is located in this store." << std::endl; I commented this out because I'm using it for a different purpose in exercise 14.
                     return bookHere;
                 }
     }
