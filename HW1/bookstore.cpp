@@ -34,7 +34,7 @@ void memberBookPurchase(int index, memberType memberList[], bookType bookList[])
     if (memberList[index].booksBought == 11) { // This operation checks to see if 11 books have been bought by a member. If it returns true, the discount is applied.
                 bookList[location].price = bookList[location].price - (memberList[index].amountSpent - 10) / 10;
                 std::cout << "You have spent " << memberList[index].amountSpent << " dollars." << std::endl;
-                memberList[index].amountSpent = 10; // Resets the amount spent so we can continue to discount for every 11th book purchased.
+                memberList[index].amountSpent = 10; // Resets the amount spent so we can continue to discount for every 11th book purchased. It resets to 10 because the cost of membership is 10.
                 memberList[index].booksBought = 0;
                 continue;
             }
