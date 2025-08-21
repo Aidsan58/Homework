@@ -3,14 +3,20 @@
 
 void memberBookPurchase(int index, memberType memberList[], bookType bookList[]) {
     bool purchasing = true;
+    char response;
     while (purchasing == true) {
+        std::cout << "Would you like to purchase a book? y or n" << std::endl;
+        std::cin >> response;
+        if (response == 'n') {
+        purchasing = false;
+    }
         std::string book;
         int location;
         std::cout << "Please enter the book you are purchasing: " << std::endl;
         std::cin >> book;
         bookSearch(book, bookList);
         if (bookSearch == false) {
-            purchasing = false;
+            continue;
         }
         
         for (int k = 0; k < 1000; k++) {
@@ -27,14 +33,14 @@ void memberBookPurchase(int index, memberType memberList[], bookType bookList[])
                 std::cout << "You have spent " << memberList[index].amountSpent << " dollars." << std::endl;
                 memberList[index].amountSpent = 0; // Resets the amount spent so we can continue to discount for every 11th book purchased.
                 memberList[index].booksBought = 0;
-                purchasing = false;
+                continue;
             }
         
         memberList[index].amountSpent += bookList[location].price;
         std::cout << "You have spent " << memberList[index].amountSpent << " dollars." << std::endl;
         
 
-        purchasing = false;
+        continue;
     }
     
     
