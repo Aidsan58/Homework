@@ -87,25 +87,34 @@ void regularBookPurchase(bookType bookList[]) {
 
 int main() {
 
-    /*
-    bookType bookList[100];
-    bookList[67].title = "C++ Programming";
-    std::cout << "The title of this book is " << bookList[67].showTitle() << "." << std::endl;
-
-    bookSearch("C++ Programming", bookList);
-    bookSearch("Phenomenology of Spirit", bookList);
-
-
-    memberType myMember;
-    myMember.setName();
-
-    std::cout << "The name of the member is " << myMember.showName() << "." << std::endl;
-    */
-
     bookType bookList[1000];
     memberType memberList[500];
     char answer;
     int j = 0;
+
+    bookList[1].title = "C++ Programming";
+    bookList[1].price = 10;
+    bookList[2].title = "Phenomenology of Spirit";
+    bookList[2].price = 10;
+    bookList[3].title = "To Kill a Mockingbird";
+    bookList[3].price = 10;
+    bookList[4].title = "Moby Dick";
+    bookList[4].price = 10;
+    bookList[5].title = "House of Leaves";
+    bookList[5].price = 10;
+    bookList[6].title = "The Sun Also Rises";
+    bookList[6].price = 10;
+    bookList[7].title = "War of the Worlds";
+    bookList[7].price = 10;
+    bookList[8].title = "Infinite Jest";
+    bookList[8].price = 10;
+    bookList[9].title = "Anna Karenina";
+    bookList[9].price = 10;
+    bookList[10].title = "The Lord of the Rings";
+    bookList[10].price = 10;
+    bookList[11].title = "Paper Towns";
+    bookList[11].price = 10;
+
 
     std::cout << "Welcome. Do you wish to claim a membership? Each member has to pay a $10 yearly membership fee and receives a 5 percent discount on each book purchased. y or n" << std::endl;
     std::cin >> answer;
