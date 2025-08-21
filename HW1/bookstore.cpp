@@ -14,7 +14,8 @@ void memberBookPurchase(int index, memberType memberList[], bookType bookList[])
         std::string book;
         int location;
         std::cout << "Please enter the book you are purchasing: " << std::endl;
-        std::cin >> book;
+        std::cin.ignore();
+        std::getline(std::cin, book);
         bool exists;
         exists = bookSearch(book, bookList);
         if (exists == false) {
@@ -28,12 +29,12 @@ void memberBookPurchase(int index, memberType memberList[], bookType bookList[])
             }
         }
 
-        std::cout << "The price of this book is" << bookList[location].price << std::endl;
+        std::cout << "The price of this book is " << bookList[location].price << " dollars." << std::endl;
         memberList[index].booksBought += 1;
     if (memberList[index].booksBought == 11) { // This operation checks to see if 11 books have been bought by a member. If it returns true, the discount is applied.
-                bookList[location].price = memberList[index].amountSpent / 10;
+                bookList[location].price = bookList[location].price - (memberList[index].amountSpent - 10) / 10;
                 std::cout << "You have spent " << memberList[index].amountSpent << " dollars." << std::endl;
-                memberList[index].amountSpent = 0; // Resets the amount spent so we can continue to discount for every 11th book purchased.
+                memberList[index].amountSpent = 10; // Resets the amount spent so we can continue to discount for every 11th book purchased.
                 memberList[index].booksBought = 0;
                 continue;
             }
@@ -62,7 +63,8 @@ void regularBookPurchase(bookType bookList[]) {
         std::string book;
         int location;
         std::cout << "Please enter the book you are purchasing: " << std::endl;
-        std::cin >> book;
+        std::cin.ignore();
+        std::getline(std::cin, book);
         bool exists;
         exists = bookSearch(book, bookList);
         if (exists == false) {
@@ -76,8 +78,7 @@ void regularBookPurchase(bookType bookList[]) {
             }
         }
 
-        std::cout << "The price of this book is" << bookList[location].price << std::endl;
-        std::cout << "You have spent " << bookList[location].price << " dollars." << std::endl;
+        std::cout << "The price of this book is " << bookList[location].price << " dollars. Thank you for purchasing." << std::endl;
         
 
         continue;
