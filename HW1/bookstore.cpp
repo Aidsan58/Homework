@@ -9,13 +9,15 @@ void memberBookPurchase(int index, memberType memberList[], bookType bookList[])
         std::cin >> response;
         if (response == 'n') {
         purchasing = false;
+        continue;
     }
         std::string book;
         int location;
         std::cout << "Please enter the book you are purchasing: " << std::endl;
         std::cin >> book;
-        bookSearch(book, bookList);
-        if (bookSearch == false) {
+        bool exists;
+        exists = bookSearch(book, bookList);
+        if (exists == false) {
             continue;
         }
         
@@ -45,6 +47,41 @@ void memberBookPurchase(int index, memberType memberList[], bookType bookList[])
     
     
    
+}
+
+void regularBookPurchase(bookType bookList[]) {
+    bool purchasing = true;
+    char response;
+    while (purchasing == true) {
+        std::cout << "Would you like to purchase a book? y or n" << std::endl;
+        std::cin >> response;
+        if (response == 'n') {
+        purchasing = false;
+        continue;
+    }
+        std::string book;
+        int location;
+        std::cout << "Please enter the book you are purchasing: " << std::endl;
+        std::cin >> book;
+        bool exists;
+        exists = bookSearch(book, bookList);
+        if (exists == false) {
+            continue;
+        }
+        
+        for (int k = 0; k < 1000; k++) {
+            if (bookList[k].title == book ||bookList[k].ISBN == book) {
+                location = k;
+                break;
+            }
+        }
+
+        std::cout << "The price of this book is" << bookList[location].price << std::endl;
+        std::cout << "You have spent " << bookList[location].price << " dollars." << std::endl;
+        
+
+        continue;
+    }
 }
    
 
@@ -80,8 +117,11 @@ int main() {
         j += 1;
     }
 
-    regularBookPurchase();
+    if (answer == 'n') { // If the user answers yes, they are added to the memberList roster, and charged ten dollars.
+        regularBookPurchase(bookList);
+    }
 
+    std::cout << "Thank you for shopping." << std::endl;
 
     return 0;
 }
