@@ -1,3 +1,4 @@
+Exercise 5:
 Using classes, design an online address book to keep track of the names,
 addresses, phone numbers, and dates of birth of family members, close
 friends, and certain business associates. Your program should be able to
@@ -27,3 +28,12 @@ V. Print the names of the people whose birthdays are in a given month.
 VI. Print the names of all the people between two last names.
 VII. Depending on the user’s request, print the names of all family members,
 friends, or business associates
+
+dateType (Exercise 2):
+In this chapter, the class dateType was designed to implement the date in
+a program, but the member function setDate and the constructor do not
+check whether the date is valid before storing the date in the member variables. Rewrite the definitions of the function setDate and the constructor
+so that the values for the month, day, and year are checked before storing
+the date into the member variables. Add a member function, isLeapYear,
+to check whether a year is a leap year. Moreover, write a test program to test
+your class
