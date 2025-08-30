@@ -25,7 +25,7 @@ public:
         extPhoneNumber = "";
     }
 
-    // Parameterized constructor
+    // This is because the variable names are the same in the constructor and the definition of the function.
     extPersonType(std::string extFirstName, std::string extLastName, bool isFamilyMember, bool isFriend, bool isBusinessAssociate, std::string phoneNumber) {
         this->extFirstName = extFirstName;
         this->extLastName = extLastName;
