@@ -8,11 +8,6 @@ public:
  void print() const;
  //Function to output the first name and last name
  //in the form firstName lastName.
-
- void setName(std::string first, std::string last);
- //Function to set firstName and lastName according
- //to the parameters.
- //Postcondition: firstName = first; lastName = last
  std::string getFirstName() const;
  //Function to return the first name.
  //Postcondition: The value of firstName is returned.
@@ -22,7 +17,7 @@ public:
   std::string firstName; //variable to store the first name
   std::string lastName; //variable to store the last name
   std::string phoneNumber; //variable to store the phone number
- personType(std::string first = "", std::string last = "", std::string number = "1234567890") {
+ personType(std::string first = "ZZZZZZZZZ", std::string last = "ZZZZZZZZZZZZZZZZ", std::string number = "1234567890") {
     firstName = first;
     lastName = last;
     phoneNumber = number;
@@ -33,6 +28,10 @@ public:
  //The default values of the parameters are null strings.
  //Postcondition: firstName = first; lastName = last
 
+ void setName(std::string first, std::string last);
+ //Function to set firstName and lastName according
+ //to the parameters.
+ //Postcondition: firstName = first; lastName = last
 
 };
 

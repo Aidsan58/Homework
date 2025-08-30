@@ -78,10 +78,14 @@ void printRelations(int index, addressBookType addressBook[]) { // Depending on 
 int main() {
     addressBookType addressBook[500];
 
-    addressBook[1].firstName = "Aidan";
-    addressBook[1].lastName = "Rosen";
+    addressBook[0].setName("Aidan", "Rosen");
+    addressBook[0].setDate(11, 4, 2002);
+    addressBook[0].phoneNumber = "7073898666";
+    addressBook[0].setAddress("750 Rubier Way", "Rio Vista", "CA", "94571");
+
 
     addressBookSort(addressBook);
+    printInformation(0, addressBook);
 
     return 0;
 }
