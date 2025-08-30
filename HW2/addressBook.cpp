@@ -6,6 +6,17 @@ void addressBookSort(addressBookType addressBook[]) { // Uses a lambda function 
     });
 }
 
+void addressBookSearch(std::string inquiry, addressBookType addressBook[]) {
+    for (int i = 0; i < 500; i++) {
+        if (addressBook[i].getLastName() == inquiry) {
+            std::cout << "Last name has been found" << std::endl;
+            return; // returns early if last name found.
+        }
+    }
+    std::cout << "No matching last name found." << std::endl;
+}
+
+
 int main() {
     addressBookType addressBook[500];
 
