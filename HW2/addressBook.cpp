@@ -6,12 +6,12 @@ void addressBookSort(addressBookType addressBook[]) { // Uses a lambda function 
     });
 }
 
-void addressBookSearch(std::string inquiry, addressBookType addressBook[]) {
+int addressBookSearch(std::string inquiry, addressBookType addressBook[]) {
     for (int i = 0; i < 500; i++) {
         if (addressBook[i].getLastName() == inquiry) {
             std::cout << "Last name has been found." << std::endl;
             int index = i;
-            return; // returns early if last name found.
+            return index; // returns early if last name found.
         }
     }
     std::cout << "No matching last name found." << std::endl;
@@ -29,6 +29,19 @@ void givenMonth(int month, addressBookType addressBook[]) { // Prints the names 
         if (addressBook[i].dMonth == month) {
             std::cout << addressBook[i].firstName << " " << addressBook[i].lastName << " has a birthday in this month." << std::endl;
         }
+    }
+}
+
+void betweenNames(std::string firstLastName, std::string secondLastName, addressBookType addressBook[]) { // Print the names of all the people between two last names.
+    int firstLocation = addressBookSearch(firstLastName, addressBook);
+    int secondLocation = addressBookSearch(secondLastName, addressBook);
+    if (firstLocation > secondLocation) { // Switches the two locations if the first location is greater than the second location.
+        int given = firstLocation;
+        firstLocation = secondLocation;
+        secondLocation = given;
+    }
+    for (int i = firstLocation + 1; i < secondLocation; i++) {
+        std::cout << addressBook[i].firstName << " " << addressBook[i].lastName << std::endl;
     }
 }
 
