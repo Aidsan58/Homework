@@ -78,6 +78,10 @@ void printRelations(int index, addressBookType addressBook[]) { // Depending on 
 int main() {
     addressBookType addressBook[500];
 
+    addressBook[1].firstName = "Aidan";
+    addressBook[1].lastName = "Rosen";
+
+    addressBookSort(addressBook);
 
     return 0;
 }

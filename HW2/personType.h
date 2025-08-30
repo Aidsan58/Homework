@@ -4,7 +4,6 @@
 class personType // This code is taken from the textbook Eighth Edition C++ PROGRAMMING D.S. Malik
 {
 public:
-std::string phoneNumber;
 
  void print() const;
  //Function to output the first name and last name
@@ -20,14 +19,21 @@ std::string phoneNumber;
  std::string getLastName() const;
  //Function to return the last name.
  //Postcondition: The value of lastName is returned.
- personType(std::string first = "", std::string last = "", std::string phoneNumber = "1234567890");
+  std::string firstName; //variable to store the first name
+  std::string lastName; //variable to store the last name
+  std::string phoneNumber; //variable to store the phone number
+ personType(std::string first = "", std::string last = "", std::string number = "1234567890") {
+    firstName = first;
+    lastName = last;
+    phoneNumber = number;
+
+ }
  //Constructor
  //Sets firstName and lastName according to the parameters.
  //The default values of the parameters are null strings.
  //Postcondition: firstName = first; lastName = last
 
- std::string firstName; //variable to store the first name
- std::string lastName; //variable to store the last name
+
 };
 
 void personType::print() const

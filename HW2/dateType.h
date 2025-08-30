@@ -23,7 +23,14 @@ public:
  //Postcondition: The value of dYear is returned.
  void printDate() const;
  //Function to output the date in the form mm-dd-yyyy.
- dateType(int month = 1, int day = 1, int year = 1900);
+int dMonth; //variable to store the month
+int dDay; //variable to store the day
+int dYear; //variable to store the year
+ dateType(int month = 1, int day = 1, int year = 1900) {
+    dMonth = month;
+    dDay = day;
+    dYear = year;
+ }
  //Constructor to set the date
  //The member variables dMonth, dDay, and dYear are set
  //according to the parameters.
@@ -32,9 +39,6 @@ public:
  // values are used to initialize the member
  // variables.
  
- int dMonth; //variable to store the month
- int dDay; //variable to store the day
- int dYear; //variable to store the year
 }; // This code is taken from the textbook Eighth Edition C++ PROGRAMMING D.S. Malik
 
 bool dateType::isLeapYear(int year) { // A leap year is dvisible by 4, but not by 100, unless it is also divisible by 400. Source: https://www.mathsisfun.com/leap-years.html
@@ -56,13 +60,13 @@ void dateType::setDate(int month, int day, int year) {
     if ((month >= 1) && (month <= 12)) {
         dMonth = month;
     }
-    if (month == 4 | month == 6 | month == 9 | month == 11) {
+    if ((month == 4) | (month == 6) | (month == 9) | (month == 11)) {
         if ((day >= 1) && (day <= 30)) {
             dDay = day;
     }
     }
 
-    if (month == 1 | month == 3 | month == 4 | month == 5 | month == 7 | month == 8 | month == 10 | month == 12) {
+    if ((month == 1) | (month == 3) | (month == 4) | (month == 5) | (month == 7) | (month == 8) | (month == 10) | (month == 12)) {
         if ((day >= 1) && (day <= 31)) {
             dDay = day;
     }
