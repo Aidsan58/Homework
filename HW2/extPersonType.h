@@ -26,9 +26,7 @@ public:
     }
 
     // Parameterized constructor
-    extPersonType(std::string extFirstName, std::string extLastName,
-                  bool isFamilyMember, bool isFriend, bool isBusinessAssociate,
-                  std::string phoneNumber) {
+    extPersonType(std::string extFirstName, std::string extLastName, bool isFamilyMember, bool isFriend, bool isBusinessAssociate, std::string phoneNumber) {
         this->extFirstName = extFirstName;
         this->extLastName = extLastName;
         this->isFamilyMember = isFamilyMember;
@@ -36,6 +34,7 @@ public:
         this->isBusinessAssociate = isBusinessAssociate;
         this->extPhoneNumber = phoneNumber;
     }
+    void extPersonTypeSet(std::string extFirstName, std::string extLastName, bool isFamilyMember, bool isFriend, bool isBusinessAssociate, std::string phoneNumber);
 };
 
 
@@ -54,4 +53,13 @@ std::string extPersonType::getRelationship() { // This function returns whatever
 
 std::string extPersonType::getPhoneNumber() { // This function returns phoneNumber. To be used with print statements.
     return extPersonType::extPhoneNumber;
+}
+
+void extPersonType::extPersonTypeSet(std::string extFirstName, std::string extLastName, bool isFamilyMember, bool isFriend, bool isBusinessAssociate, std::string phoneNumber) {
+        this->extFirstName = extFirstName;
+        this->extLastName = extLastName;
+        this->isFamilyMember = isFamilyMember;
+        this->isFriend = isFriend;
+        this->isBusinessAssociate = isBusinessAssociate;
+        this->extPhoneNumber = phoneNumber;
 }
