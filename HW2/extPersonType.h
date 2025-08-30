@@ -5,7 +5,9 @@
 
 class extPersonType : public personType, public dateType, public addressType {
     public:
-        bool isfamilyMember;
+        std::string extFirstName;
+        std::string extLastName;
+        bool isFamilyMember;
         bool isFriend;
         bool isBusinessAssociate;
         std::string extPhoneNumber;
@@ -15,11 +17,11 @@ class extPersonType : public personType, public dateType, public addressType {
         std::string getPhoneNumber();
 
 
-    extPersonType(bool isFamilyMember = false, bool isFriend = false, bool isBusinessAssociate = false, std::string phoneNumber = "1234567890"); // Constructs extPersonType with all boolean values set to false.
+    extPersonType(std::string extFirstName = "", std::string extLastName = "", bool isFamilyMember = false, bool isFriend = false, bool isBusinessAssociate = false, std::string phoneNumber = "1234567890"); // Constructs extPersonType with all boolean values set to false.
 };
 
 std::string extPersonType::getRelationship() { // This function returns whatever relation the individual in extPersonType is to the individual in personType.
-    if (extPersonType::isfamilyMember == true) {
+    if (extPersonType::isFamilyMember == true) {
         return "family member";
     }
     if (extPersonType::isFriend == true) {

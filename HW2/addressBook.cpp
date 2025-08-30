@@ -15,6 +15,7 @@ int addressBookSearch(std::string inquiry, addressBookType addressBook[]) {
         }
     }
     std::cout << "No matching last name found." << std::endl;
+    return -1; // Not found
 }
 
 void printInformation(int index, addressBookType addressBook[]) { // Print the address, phone number, and date of birth of a person.
@@ -35,6 +36,10 @@ void givenMonth(int month, addressBookType addressBook[]) { // Prints the names 
 void betweenNames(std::string firstLastName, std::string secondLastName, addressBookType addressBook[]) { // Print the names of all the people between two last names.
     int firstLocation = addressBookSearch(firstLastName, addressBook);
     int secondLocation = addressBookSearch(secondLastName, addressBook);
+    if (firstLocation == -1 || secondLocation == -1) {
+    std::cout << "One or both names not found." << std::endl;
+    return;
+    }
     if (firstLocation > secondLocation) { // Switches the two locations if the first location is greater than the second location.
         int given = firstLocation;
         firstLocation = secondLocation;
@@ -43,6 +48,31 @@ void betweenNames(std::string firstLastName, std::string secondLastName, address
     for (int i = firstLocation + 1; i < secondLocation; i++) {
         std::cout << addressBook[i].firstName << " " << addressBook[i].lastName << std::endl;
     }
+}
+
+void printRelations(int index, addressBookType addressBook[]) { // Depending on the user’s request, print the names of all family members, friends, or business associates.
+    std::cout << "Do you wish to print the names of family members, friends, or associates? family or friend or associate" << std::endl;
+    std::string result;
+    std::cin >> result;
+    for (int j = 0; j < 500; j++) {
+        if (result == "family") {
+        if (addressBook[index].isFamilyMember == true) {
+        std::cout << addressBook[index].extFirstName << " " << addressBook[index].extLastName << std::endl;
+        return;
+    }
+    }
+    if (result == "friend") {
+        if (addressBook[index].isFriend == true) {
+        std::cout << addressBook[index].extFirstName << " " << addressBook[index].extLastName << std::endl;
+    }
+    }
+    if (result == "associate") {
+        if (addressBook[index].isBusinessAssociate == true) {
+        std::cout << addressBook[index].extFirstName << " " << addressBook[index].extLastName << std::endl;
+            }
+        }
+    }
+        std::cout << "None found." << std::endl;
 }
 
 int main() {
