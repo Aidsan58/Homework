@@ -8,7 +8,7 @@ class extPersonType : public personType, public dateType, public addressType {
         bool isfamilyMember;
         bool isFriend;
         bool isBusinessAssociate;
-        std::string phoneNumber;
+        std::string extPhoneNumber;
 
         std::string getRelationship();
 

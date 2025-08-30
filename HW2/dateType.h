@@ -31,8 +31,7 @@ public:
  // If no values are specified, the default
  // values are used to initialize the member
  // variables.
-
-private:
+ 
  int dMonth; //variable to store the month
  int dDay; //variable to store the day
  int dYear; //variable to store the year
