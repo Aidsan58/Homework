@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-class personType
+class personType // This code is taken from the textbook Eighth Edition C++ PROGRAMMING D.S. Malik
 {
 public:
  void print() const;
@@ -51,4 +51,4 @@ personType::personType(std::string first, std::string last)
 {
  firstName = first;
  lastName = last;
-}
+} // This code is taken from the textbook Eighth Edition C++ PROGRAMMING D.S. Malik

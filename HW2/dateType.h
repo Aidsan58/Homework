@@ -1,6 +1,6 @@
 #include <algorithm>
 
-class dateType
+class dateType // This code is taken from the textbook Eighth Edition C++ PROGRAMMING D.S. Malik
 {
 public:
  void setDate(int month, int day, int year);
@@ -36,7 +36,7 @@ private:
  int dMonth; //variable to store the month
  int dDay; //variable to store the day
  int dYear; //variable to store the year
-};
+}; // This code is taken from the textbook Eighth Edition C++ PROGRAMMING D.S. Malik
 
 bool dateType::isLeapYear(int year) { // A leap year is dvisible by 4, but not by 100, unless it is also divisible by 400. Source: https://www.mathsisfun.com/leap-years.html
     if ((year % 4) == 0) {
