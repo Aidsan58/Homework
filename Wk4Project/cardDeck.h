@@ -8,10 +8,10 @@ class cardDeck {
     card cards[CARDS_LENGTH];
 
     
-    void deckEnumeration(card arr[]);
+    void deckEnumeration();
 };
 
-void cardDeck::deckEnumeration(card cards[CARDS_LENGTH]) {
+void cardDeck::deckEnumeration() {
     int i = 0;
     for (int j = 0; j < FACES_COUNT; j++) {
         for (int k = 0; k < SUITS_COUNT; k++) {
