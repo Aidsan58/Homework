@@ -5,11 +5,9 @@
 #include "player.h"
 #include "cardDeck.h"
 
-class dealer {
+class dealer : public player {
     public:
     bool canHit = true;
-    
-    private:
     void shuffleDeck();
     cardDeck deck;
     
