@@ -5,4 +5,4 @@ class player {
     public:
     std::string name;
 
-}
+};
