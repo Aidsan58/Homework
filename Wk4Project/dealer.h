@@ -2,7 +2,7 @@
 #include "player.h"
 
 
-class dealer {
+class dealer : public player {
     public:
     dealer(const std::string& name);
 
