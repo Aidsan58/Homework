@@ -52,7 +52,7 @@ After the dealer gets their hand each player is evaluated for win loose or draw
 
           If both the player and dealer have more than 21
 
-     A player looses:
+     A player loses:
 
           If the dealer has five cards with a total of 15 or less
 
