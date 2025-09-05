@@ -10,6 +10,8 @@ class table {
     void addPlayer(const std::string& name);
     void addDealer(const std::string& name);
 
+    table();
+
 };
 
 void table::addPlayer(const std::string& name) {
