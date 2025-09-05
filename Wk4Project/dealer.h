@@ -1,9 +1,10 @@
 // The dealer is a player
 #include "player.h"
-#include "cardDeck.h"
+
 
 class dealer {
     public:
+    dealer(const std::string& name);
 
 
 
