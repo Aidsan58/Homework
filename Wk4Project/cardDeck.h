@@ -1,13 +1,19 @@
 #include <iostream>
 #include <string>
+#include <algorithm> // https://cplusplus.com/reference/algorithm/shuffle/
+#include <random> // default_random_engine generates pseudo random numbers.
+#include <chrono> // adds clock
 #include "card.h"
 
 class cardDeck {
     public:
     static const int CARDS_LENGTH = 52;
     card cards[CARDS_LENGTH];
+    int index = 0;
     
     void deckEnumeration();
+    void shuffleDeck();
+    card dealCard();
 };
 
 void cardDeck::deckEnumeration() {
@@ -27,4 +33,20 @@ void cardDeck::deckEnumeration() {
             i++;
         }
     }
+}
+
+void cardDeck::shuffleDeck() {
+    
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count(); // I took this code from cplusplus.com
+    std::shuffle (cards, cards + cardDeck::CARDS_LENGTH, std::default_random_engine(seed));
+    index = 0;
+}
+
+
+
+card cardDeck::dealCard() {
+    if (index >= CARDS_LENGTH) {
+        shuffleDeck();
+    }
+    return cards[index++];
 }
