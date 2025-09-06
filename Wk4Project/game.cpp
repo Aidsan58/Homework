@@ -87,6 +87,7 @@ int main() {
             break;
         }
         else {
+            gameTable.clearTable();
             game(gameTable, deck);
         }
 

@@ -41,7 +41,7 @@ int player::getHandValue() {
     for (int i = 0; i < handSize; ++i) {
         total += hand[i].value;
         
-        //Code to recognize if it's an ace.
+        // Ace case. Ace should be 1 or 11 depending on if including ace will bring the player to 21.
         if (hand[i].face == ACE) {
             aces++;
         }
