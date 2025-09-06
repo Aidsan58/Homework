@@ -41,22 +41,22 @@ void game(table& gameTable, cardDeck& deck) {
             if ((tablePlayer.getHandValue() > gameTable.tableDealer.getHandValue()) && tablePlayer.getHandValue() < 21 ) { // win condition
                 std::cout << tablePlayer.name << " has won the game." << std::endl;
             }
-            if ((tablePlayer.getHandValue() <= 21) && (gameTable.tableDealer.getHandValue() > 21 )) { // win condition
+            if ((tablePlayer.getHandValue() <= 21) && (gameTable.tableDealer.getHandValue() > 21 )) { // win 
                 std::cout << tablePlayer.name << " has won the game." << std::endl;
             }
-            else if ((tablePlayer.getHandValue() > 21) && (gameTable.tableDealer.getHandValue() > 21)) {
+            else if ((tablePlayer.getHandValue() > 21) && (gameTable.tableDealer.getHandValue() > 21)) { // draw
                 std::cout << tablePlayer.name << " draws." << std::endl;
             }
-            else if ((tablePlayer.getHandValue() == gameTable.tableDealer.getHandValue())) {
+            else if ((tablePlayer.getHandValue() == gameTable.tableDealer.getHandValue())) { // draw
                 std::cout << tablePlayer.name << " draws." << std::endl;
             }
-            else if ((gameTable.tableDealer.getHandValue() < 15) && (gameTable.tableDealer.handSize >= 5)) {
+            else if ((gameTable.tableDealer.getHandValue() < 15) && (gameTable.tableDealer.handSize >= 5)) { // loss
                 std::cout << tablePlayer.name << " has lost the game." << std::endl;
             }
-            else if ((tablePlayer.getHandValue() > 21) && (gameTable.tableDealer.handSize <= 21)) {
+            else if ((tablePlayer.getHandValue() > 21) && (gameTable.tableDealer.handSize <= 21)) { // loss
                 std::cout << tablePlayer.name << " has lost the game." << std::endl;
             }
-            else if (((tablePlayer.getHandValue() < 21) && (gameTable.tableDealer.handSize < 21)) && (tablePlayer.getHandValue() < gameTable.tableDealer.getHandValue())) {
+            else if (((tablePlayer.getHandValue() < 21) && (gameTable.tableDealer.handSize < 21)) && (tablePlayer.getHandValue() < gameTable.tableDealer.getHandValue())) { // loss
                 std::cout << tablePlayer.name << " has lost the game." << std::endl;
             }
             
