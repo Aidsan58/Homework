@@ -27,14 +27,8 @@ void game(table& gameTable, cardDeck& deck) {
             }
         }
             while(gameTable.tableDealer.canHit == true) {
-                std::cout << gameTable.tableDealer.name << " do you want another card? y or n" << std::endl;
-                std::cin >> response;
-                if (response == 'n') {
-                    break;
-                }
-                else {
+                std::cout << gameTable.tableDealer.name << " dealer draws a card." << std::endl;
                     gameTable.tableDealer.dealerAddCard(deck.dealCard());
-                }
             }
 
         for (player& tablePlayer : gameTable.players) { // Each player is evaluated for win condition.

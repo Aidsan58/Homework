@@ -36,22 +36,22 @@ player::player(const std::string& name) {
 
 int player::getHandValue() {
 
-    int total = 0;
+    int handValue = 0;
     int aces = 0;
     for (int i = 0; i < handSize; ++i) {
-        total += hand[i].value;
+        handValue += hand[i].value;
         
         // Ace case. Ace should be 1 or 11 depending on if including ace will bring the player to 21.
         if (hand[i].face == ACE) {
             aces++;
         }
-        while (((total + 10) <= 21) && (aces > 0)) {
-            total += 10; // Ace is now valued at 11.
+        while (((handValue + 10) <= 21) && (aces > 0)) {
+            handValue += 10; // Ace is now valued at 11.
             aces--;
             
         }
     }
-    return total;
+    return handValue;
 }
 
 
