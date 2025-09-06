@@ -1,4 +1,4 @@
-#include "cardDeck.h"
+//#include "cardDeck.h"
 #include "dealer.h"
 #include <vector>
 
@@ -9,6 +9,7 @@ class table {
 
     void addPlayer(const std::string& name);
     void addDealer(const std::string& name);
+    void clearTable();
 
     table();
 
@@ -26,4 +27,14 @@ void table::addPlayer(const std::string& name) {
 
 void table::addDealer(const std::string& name) {
     tableDealer = dealer(name);
+}
+
+void table::clearTable() {
+    for (player& tablePlayer : players) {
+        tablePlayer.resetHand();
+    }
+}
+
+table::table() {
+    //empty
 }

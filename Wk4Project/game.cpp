@@ -1,6 +1,6 @@
 #include "table.h"
 
-void game(table gameTable, cardDeck deck) {
+void game(table& gameTable, cardDeck& deck) {
 
     char response;
 
@@ -15,7 +15,7 @@ void game(table gameTable, cardDeck deck) {
         for (player& tablePlayer : gameTable.players) { // Each player is asked if they want a card.
             
             while (tablePlayer.canHit == true) {
-                std::cout << "Do you want another card?" << std::endl;
+                std::cout << tablePlayer.name << " do you want another card? y or n" << std::endl;
                 std::cin >> response;
                 if (response == 'n') {
                     std::cout << "Moving on to next player." << std::endl;
@@ -27,7 +27,7 @@ void game(table gameTable, cardDeck deck) {
             }
         }
             while(gameTable.tableDealer.canHit == true) {
-                std::cout << "Do you want another card?" << std::endl;
+                std::cout << gameTable.tableDealer.name << " do you want another card? y or n" << std::endl;
                 std::cin >> response;
                 if (response == 'n') {
                     break;
@@ -39,25 +39,25 @@ void game(table gameTable, cardDeck deck) {
 
         for (player& tablePlayer : gameTable.players) { // Each player is evaluated for win condition.
             if ((tablePlayer.getHandValue() > gameTable.tableDealer.getHandValue()) && tablePlayer.getHandValue() < 21 ) { // win condition
-                std::cout << tablePlayer << " has won the game." << std::endl;
+                std::cout << tablePlayer.name << " has won the game." << std::endl;
             }
             if ((tablePlayer.getHandValue() <= 21) && (gameTable.tableDealer.getHandValue() > 21 )) { // win condition
-                std::cout << tablePlayer << " has won the game." << std::endl;
+                std::cout << tablePlayer.name << " has won the game." << std::endl;
             }
             else if ((tablePlayer.getHandValue() > 21) && (gameTable.tableDealer.getHandValue() > 21)) {
-                std::cout << tablePlayer << " draws." << std::endl;
+                std::cout << tablePlayer.name << " draws." << std::endl;
             }
             else if ((tablePlayer.getHandValue() == gameTable.tableDealer.getHandValue())) {
-                std::cout << tablePlayer << " draws." << std::endl;
+                std::cout << tablePlayer.name << " draws." << std::endl;
             }
             else if ((gameTable.tableDealer.getHandValue() < 15) && (gameTable.tableDealer.handSize >= 5)) {
-                std::cout << tablePlayer << " has lost the game." << std::endl;
+                std::cout << tablePlayer.name << " has lost the game." << std::endl;
             }
             else if ((tablePlayer.getHandValue() > 21) && (gameTable.tableDealer.handSize <= 21)) {
-                std::cout << tablePlayer << " has lost the game." << std::endl;
+                std::cout << tablePlayer.name << " has lost the game." << std::endl;
             }
-            else if (((tablePlayer.getHandValue() < 21) && (gameTable.tableDealer.handSize < 21)) (tablePlayer.getHandValue() < gameTable.tableDealer.getHandValue())) {
-                std::cout << tablePlayer << " has lost the game." << std::endl;
+            else if (((tablePlayer.getHandValue() < 21) && (gameTable.tableDealer.handSize < 21)) && (tablePlayer.getHandValue() < gameTable.tableDealer.getHandValue())) {
+                std::cout << tablePlayer.name << " has lost the game." << std::endl;
             }
             
         }
