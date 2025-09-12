@@ -9,6 +9,8 @@
 class checkingAccount : public bankAccount {
     public:
     virtual void writeCheck() = 0;
+
+    ~checkingAccount() = default;
 };
 
 #endif
