@@ -7,6 +7,7 @@
 #include "bankAccount.h"
 
 class checkingAccount : public bankAccount {
+    public:
     virtual void writeCheck() = 0;
 };
 
