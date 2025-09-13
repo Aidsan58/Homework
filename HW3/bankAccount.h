@@ -21,6 +21,9 @@ class bankAccount {
     virtual void withdrawMoney() = 0;
     virtual void createMonthlyStatement() = 0;
 
+    int withdrawalCount;
+    int depositCount;
+
     // Default destructor
     ~bankAccount() = default;
 
