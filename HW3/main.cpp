@@ -20,7 +20,7 @@ bankAccount* setAccount() { // Returns a pointer to bankAccount. The type depend
     int variable;
     std::cin >> variable; // user input
 
-    if (variable == 1) {
+    if (variable == 1) { // Checks to see if user input matches the value for the account type. Does this for every account type until the right one is found
         return new serviceChargeChecking(); // Memory is allocated when the program executes rather than at compile time, so the keyword 'new' is used
     }
     if (variable == 2) {
