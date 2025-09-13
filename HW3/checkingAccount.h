@@ -13,7 +13,7 @@ class checkingAccount : public bankAccount {
     int checkCount = 0;
 
     // Default destructor
-    ~checkingAccount() = default;
+    //~checkingAccount() = default;
 };
 
 #endif
