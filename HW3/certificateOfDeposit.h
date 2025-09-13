@@ -37,7 +37,7 @@ class certificateOfDeposit : public bankAccount {
     void createMonthlyStatement() override {
         double interest = balance * interestRate;
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
-        std::cout << "Your account balance is now $" << (balance - interest) << "." << std::endl;
+        std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl;
     }
 };
 
