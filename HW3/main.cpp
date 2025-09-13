@@ -19,43 +19,45 @@ bankAccount* setAccount() {
     int variable;
     std::cin >> variable;
 
-    for (int i = 1; i < 7; i++) {
-        if (i == variable) {
-            return new serviceChargeChecking();
-        }
-        if (i == variable) {
-            return new noServiceChargeChecking();
-        }
-        if (i == variable) {
-            return new highInterestChecking;
-        }
-        if (i == variable) {
-            return new certificateOfDeposit;
-        }
-        if (i == variable) {
-            return new savingsAccount;
-        }
-        if (i == variable) {
-            return new highInterestSavings;
-        }
-        else {
-            std::cout << "Option not available" << std::endl;
-            return nullptr;
-        }
+    if (variable == 1) {
+        return new serviceChargeChecking();
     }
+    if (variable == 2) {
+        return new noServiceChargeChecking();
+    }
+    if (variable == 3) {
+        return new highInterestChecking();
+    }
+    if (variable == 4) {
+        return new certificateOfDeposit();
+    }
+    if (variable == 5) {
+        return new savingsAccount();
+    }
+    if (variable == 6) {
+        return new highInterestSavings();
+    }
+    std::cout << "Option not available" << std::endl;
+    return nullptr;
 }
 
 int main () {
 
+    bankAccount* ptr = setAccount();
+    ptr->setData("Aidan", "109402353");
 
-    
 
-    bankAccount* ptr = &myAccount;
-
-    ptr->name = "Aidan";
     std::cout << "Name: " << ptr->getName() << std::endl;
+    std::cout << "Account number: " << ptr->getAccountNumber() << std::endl;
     ptr->makeDeposit();
-    ptr->makeDeposit();
+    ptr->withdrawMoney();
 
+    checkingAccount* myPtr = dynamic_cast<checkingAccount*>(ptr); // If the user has a checking account, the program makes a dynamic cast conversion from *bankAccount to *checkingAccount
+    if (myPtr) {
+        myPtr->writeCheck();
+    }
+    ptr->createMonthlyStatement();
+
+    //delete ptr;
     return 0;
 }
