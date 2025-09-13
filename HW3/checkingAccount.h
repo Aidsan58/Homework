@@ -10,7 +10,7 @@ class checkingAccount : public bankAccount {
     public:
     virtual void writeCheck() = 0;
 
-    int checkCount;
+    int checkCount = 0;
 
     // Default destructor
     ~checkingAccount() = default;
