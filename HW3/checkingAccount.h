@@ -12,8 +12,6 @@ class checkingAccount : public bankAccount {
 
     int checkCount = 0;
 
-    // Default destructor
-    //~checkingAccount() = default;
 };
 
 #endif

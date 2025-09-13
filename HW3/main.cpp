@@ -55,9 +55,10 @@ int main () {
     checkingAccount* myPtr = dynamic_cast<checkingAccount*>(ptr); // If the user has a checking account, the program makes a dynamic cast conversion from *bankAccount to *checkingAccount
     if (myPtr) {
         myPtr->writeCheck();
+        myPtr->createMonthlyStatement();
+        return 0;
     }
     ptr->createMonthlyStatement();
 
-    //delete ptr;
     return 0;
 }

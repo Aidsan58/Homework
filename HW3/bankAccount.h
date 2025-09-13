@@ -26,9 +26,6 @@ class bankAccount {
     int withdrawalCount = 0;
     int depositCount = 0;
 
-    // Default destructor
-    //virtual ~bankAccount() = 0;
-
 };
 
 void bankAccount::setData(const std::string& name, const std::string& accountNumber) {

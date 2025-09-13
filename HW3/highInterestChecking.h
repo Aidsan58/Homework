@@ -7,9 +7,9 @@
 
 class highInterestChecking : public checkingAccount {
     public:
-    double monthlyServiceCharge;
-    double interest;
-    double minimumBalance;
+    double monthlyServiceCharge = 5;
+    double interest = 8;
+    double minimumBalance = 10;
 
 
     void writeCheck() override {

@@ -7,7 +7,7 @@
 
 class serviceChargeChecking : public checkingAccount {
     public:
-    double monthlyServiceCharge;
+    double monthlyServiceCharge = 5;
 
 
     void writeCheck() override {

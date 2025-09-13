@@ -7,7 +7,7 @@
 
 class highInterestSavings : public savingsAccount {
     public:
-    double interest;
+    double interest = 8;
 
 
     void withdrawMoney() override {

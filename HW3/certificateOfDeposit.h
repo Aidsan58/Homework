@@ -7,7 +7,7 @@
 
 class certificateOfDeposit : public bankAccount {
     public:
-    double interestRate;
+    double interestRate = 10;
     int numCDMaturityMonths;
     int currentCDMonth;
 
