@@ -9,6 +9,8 @@ class serviceChargeChecking : public checkingAccount {
     public:
     double monthlyServiceCharge;
 
+
+
     void writeCheck() override {
         double checkSize;
         std::cout << "How much money are you writing the check for?" << std::endl;
@@ -16,6 +18,7 @@ class serviceChargeChecking : public checkingAccount {
         if ((balance - checkSize) >= 0) {
             balance -= checkSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
+            checkCount += 1;
         }
         else {
             std::cout << "You don't have enough funds to write this check." << std::endl;
@@ -29,6 +32,7 @@ class serviceChargeChecking : public checkingAccount {
         if ((balance - withdrawalSize) >= 0) { 
             balance -= withdrawalSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
+            withdrawalCount += 1;
         }
         else {  // If the withdrawal would bring the account balance to less than zero dollars, the transaction is denied
             std::cout << "You don't have enough funds to withdraw this cash." << std::endl;
@@ -41,7 +45,12 @@ class serviceChargeChecking : public checkingAccount {
         std::cin >> depositSize;
         balance += depositSize;
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
+        depositCount += 1;
+    }
 
+    void createMonthlyStatement() override {
+        std::cout << "You made " << withdrawalCount << " withdrawals, " << depositCount << " deposits, and you wrote " << checkCount << " checks this month." << std::endl;
+        std::cout << "Your account balance is now $" << balance << "." << std::endl;
     }
 };
 
