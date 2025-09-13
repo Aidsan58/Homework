@@ -13,6 +13,8 @@ class bankAccount {
     std::string accountNumber;
     double balance;
 
+    void setData(const std::string& name, const std::string& accountNumber);
+
     std::string getName();
     std::string getAccountNumber();
     double getBalance();
@@ -25,9 +27,14 @@ class bankAccount {
     int depositCount = 0;
 
     // Default destructor
-    ~bankAccount() = default;
+    //virtual ~bankAccount() = 0;
 
 };
+
+void bankAccount::setData(const std::string& name, const std::string& accountNumber) {
+    this->name = name;
+    this->accountNumber = accountNumber;
+}
 
 std::string bankAccount::getName() {
     return name;
