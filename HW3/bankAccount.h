@@ -11,15 +11,15 @@ class bankAccount {
     public:
     std::string name;
     std::string accountNumber;
-    double balance;
+    double balance = 0;
 
-    void setData(const std::string& name, const std::string& accountNumber);
+    void setData(const std::string& name, const std::string& accountNumber); // This function is here so we can easily set values for instances of subclasses.
 
     std::string getName();
     std::string getAccountNumber();
     double getBalance();
 
-    virtual void makeDeposit() = 0;
+    virtual void makeDeposit() = 0; // The following three classes will be overridden by all non-abstract classes that are further down the inheritance hierarchy
     virtual void withdrawMoney() = 0;
     virtual void createMonthlyStatement() = 0;
 
@@ -27,22 +27,5 @@ class bankAccount {
     int depositCount = 0;
 
 };
-
-void bankAccount::setData(const std::string& name, const std::string& accountNumber) {
-    this->name = name;
-    this->accountNumber = accountNumber;
-}
-
-std::string bankAccount::getName() {
-    return name;
-}
-
-std::string bankAccount::getAccountNumber() {
-    return accountNumber;
-}
-
-double bankAccount::getBalance() {
-    return balance;
-}
 
 #endif
