@@ -8,9 +8,9 @@
 
 class checkingAccount : public bankAccount {
     public:
-    virtual void writeCheck() = 0;
+    virtual void writeCheck() = 0; // Only classes derived from checkingAccount should have the function writeCheck()
 
-    int checkCount = 0;
+    int checkCount = 0; // This variable is only used in classes derived from checkingAccount. Its value is assigned here
 
 };
 

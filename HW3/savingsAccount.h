@@ -30,12 +30,12 @@ class savingsAccount : public bankAccount {
         std::cin >> depositSize;
         balance += depositSize;
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
-        depositCount += 1;
+        depositCount += 1; // Increases the deposit count to be used by createMonthlyStatement
     }
 
     void createMonthlyStatement() override {
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
-        std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl;
+        std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl; // We add interest at the end
     }
 };
 

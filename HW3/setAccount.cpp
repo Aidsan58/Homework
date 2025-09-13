@@ -1,13 +1,3 @@
-#include "bankAccount.h"
-#include "bankAccount.cpp"
-#include "savingsAccount.h"
-#include "highInterestChecking.h"
-#include "certificateOfDeposit.h"
-#include "highInterestSavings.h"
-#include "noServiceChargeChecking.h"
-#include "checkingAccount.h"
-#include "serviceChargeChecking.h"
-
 bankAccount* setAccount() { // Returns a pointer to bankAccount. The type depends on user input which determines the return value
     std::cout << "What bank account do you wish to open?" << std::endl;
     std::cout << "Press 1 for service charge checking." << std::endl;
@@ -40,26 +30,4 @@ bankAccount* setAccount() { // Returns a pointer to bankAccount. The type depend
     }
     std::cout << "Option not available" << std::endl;
     return nullptr; // if the user didn't input a valid option the function returns a pointer pointing to nothing
-}
-
-int main () {
-
-    bankAccount* ptr = setAccount();
-    ptr->setData("Aidan", "109402353");
-
-
-    std::cout << "Name: " << ptr->getName() << std::endl;
-    std::cout << "Account number: " << ptr->getAccountNumber() << std::endl;
-    ptr->makeDeposit();
-    ptr->withdrawMoney();
-
-    checkingAccount* myPtr = dynamic_cast<checkingAccount*>(ptr); // If the user has a checking account, the program makes a dynamic cast conversion from *bankAccount to *checkingAccount
-    if (myPtr) {                                                  // This way we can call writeCheck()
-        myPtr->writeCheck();
-        myPtr->createMonthlyStatement(); // There are multiple versions of createMonthlyStatement, but it should only be called once
-        return 0;
-    }
-    ptr->createMonthlyStatement();
-
-    return 0;
 }

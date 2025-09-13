@@ -29,13 +29,13 @@ class certificateOfDeposit : public bankAccount {
         double depositSize;
         std::cout << "How much money do you wish to deposit?" << std::endl;
         std::cin >> depositSize;
-        balance += depositSize;
+        balance += depositSize; // Increases the deposit count to be used by createMonthlyStatement
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
         depositCount += 1;
     }
 
     void createMonthlyStatement() override {
-        double interest = balance * interestRate;
+        double interest = interestRate / balance; // Gets the interest for a CD account
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
         std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl;
     }

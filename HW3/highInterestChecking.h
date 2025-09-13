@@ -19,7 +19,7 @@ class highInterestChecking : public checkingAccount {
         if ((balance - checkSize) >= minimumBalance) {
             balance -= checkSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
-            checkCount += 1;
+            checkCount += 1;  // Increases the check count to be used by createMonthlyStatement
         }
         else {
             std::cout << "You don't have enough funds to write this check." << std::endl;
@@ -46,12 +46,12 @@ class highInterestChecking : public checkingAccount {
         std::cin >> depositSize;
         balance += depositSize;
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
-        depositCount += 1;
+        depositCount += 1; // Increases the deposit count to be used by createMonthlyStatement
     }
 
     void createMonthlyStatement() override {
         std::cout << "You made " << withdrawalCount << " withdrawals, " << depositCount << " deposits, and you wrote " << checkCount << " checks this month." << std::endl;
-        std::cout << "Your account balance is now $" << (balance - interest) << "." << std::endl;
+        std::cout << "Your account balance is now $" << (balance + interest - monthlyServiceCharge) << "." << std::endl; // Adds balance and interest and subtracts the service charge
     }
 };
 
