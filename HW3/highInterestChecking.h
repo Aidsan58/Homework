@@ -1,20 +1,22 @@
 // Derived from checkingAccount
 
-#ifndef SERVICE_CHARGE_CHECKING_H
-#define SERVICE_CHARGE_CHECKING_H
+#ifndef HIGH_INTEREST_CHECKING_H
+#define HIGH_INTEREST_CHECKING_H
 
 #include "checkingAccount.h"
 
-class serviceChargeChecking : public checkingAccount {
+class highInterestChecking : public checkingAccount {
     public:
     double monthlyServiceCharge;
+    double interest;
+    double minimumBalance;
 
 
     void writeCheck() override {
         double checkSize;
         std::cout << "How much money are you writing the check for?" << std::endl;
         std::cin >> checkSize;
-        if ((balance - checkSize) >= 0) {
+        if ((balance - checkSize) >= minimumBalance) {
             balance -= checkSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             checkCount += 1;
@@ -28,12 +30,12 @@ class serviceChargeChecking : public checkingAccount {
         double withdrawalSize;
         std::cout << "How much money do you wish to withdraw?" << std::endl;
         std::cin >> withdrawalSize;
-        if ((balance - withdrawalSize) >= 0) { 
+        if ((balance - withdrawalSize) >= minimumBalance) { 
             balance -= withdrawalSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             withdrawalCount += 1;
         }
-        else {  // If the withdrawal would bring the account balance to less than zero dollars, the transaction is denied
+        else {  // If the withdrawal would bring the account balance to less than minimumBalance, the transaction is denied
             std::cout << "You don't have enough funds to withdraw this cash." << std::endl;
         }
     }
@@ -49,7 +51,7 @@ class serviceChargeChecking : public checkingAccount {
 
     void createMonthlyStatement() override {
         std::cout << "You made " << withdrawalCount << " withdrawals, " << depositCount << " deposits, and you wrote " << checkCount << " checks this month." << std::endl;
-        std::cout << "Your account balance is now $" << (balance - monthlyServiceCharge) << "." << std::endl;
+        std::cout << "Your account balance is now $" << (balance - interest) << "." << std::endl;
     }
 };
 
