@@ -4,7 +4,7 @@
 #include "bankAccount.h"
 
 void bankAccount::setData(const std::string& name, const std::string& accountNumber) {
-    this->name = name;
+    this->name = name; // The 'name' parameter has the same value as 'name' in bankAccount. 'this' is  a pointer to bankAccount
     this->accountNumber = accountNumber;
 } // We take care of balance separately in the class body itself
 
