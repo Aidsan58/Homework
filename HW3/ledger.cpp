@@ -1,4 +1,10 @@
 #include <iostream>
+#include "ledger.h"
+
+ledger::ledger(double value, enum TransactionType type) {
+    this->value;
+    this->type;
+}
 
 int main() {
     int *intList;

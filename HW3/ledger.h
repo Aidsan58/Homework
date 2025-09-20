@@ -1,5 +1,12 @@
+#ifndef LEDGER_H
+#define LEDGER_H
+
 class ledger {
     double value;
+    enum class TransactionType { WITHDRAWAL, DEPOSIT, CHECK };
+    TransactionType type;
 
-    enum TransactionType { WITHDRAWAL, DEPOSIT, CHECK };
+    ledger(double value, enum TransactionType type);
 };
+
+#endif
