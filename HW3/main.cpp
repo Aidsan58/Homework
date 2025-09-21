@@ -1,6 +1,7 @@
 #include "bankAccount.h"
 #include "bankAccount.cpp"
 #include "savingsAccount.h"
+#include "savingsAccount.cpp"
 #include "highInterestChecking.h"
 #include "certificateOfDeposit.h"
 #include "highInterestSavings.h"
@@ -64,9 +65,15 @@ int main () {
     }
     ptr->createMonthlyStatement();
 
-    ptr->printLedger(ptr, savingsAccount->myLedger);
+    // ledger
+    // prints all values in ledger
+    std::cout << "Ledger: " << std::endl;
+    savingsAccount* newPtr = dynamic_cast<savingsAccount*>(ptr);
+    if (newPtr) {
+        newPtr->printLedger(newPtr);
+        return 0;
+    }
 
-    delete ptr; // deletes the instance of the class from memory
 
     return 0;
 }

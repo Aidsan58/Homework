@@ -4,14 +4,14 @@
 #define SAVINGS_ACCOUNT_H
 
 #include "bankAccount.h"
-#include "ledger.cpp"
 
 class savingsAccount : public bankAccount {
     public:
     double interest = 5;
 
     // creates Ledger instance
-    ledger myLedger[100];
+    ledger myLedger[10];
+    int ledgerIndex = 0;
 
 
     void withdrawMoney() override {
@@ -43,6 +43,8 @@ class savingsAccount : public bankAccount {
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
         std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl; // We add interest at the end
     }
+
+    void printLedger(savingsAccount* ptr);
 
 };
 

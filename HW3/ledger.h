@@ -5,14 +5,15 @@
 
 class ledger {
     public:
-    int ledgerIndex = 0;
-    double value;
+    double value = 0;
     enum class TransactionType { WITHDRAWAL, DEPOSIT, CHECK };
     TransactionType type;
 
-    ledger(); // default constructor
+    ledger() {  // default constructor
+    // empty
+}
+
     ledger(double value, enum TransactionType type); // constructor
-    void ledger::printLedger(bankAccount* ptr, ledger myLedger[]);
 
 };
 
