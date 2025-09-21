@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include <string>
-#include "ledger.cpp"
+#include "ledger.h"
 
 class bankAccount : public ledger {
     public:
@@ -26,6 +26,8 @@ class bankAccount : public ledger {
 
     int withdrawalCount = 0;
     int depositCount = 0;
+
+    virtual void printLedger() = 0;
 
 };
 

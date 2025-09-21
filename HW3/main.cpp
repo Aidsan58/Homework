@@ -1,14 +1,11 @@
 #include "bankAccount.h"
-#include "bankAccount.cpp"
 #include "savingsAccount.h"
-#include "savingsAccount.cpp"
 #include "highInterestChecking.h"
 #include "certificateOfDeposit.h"
 #include "highInterestSavings.h"
 #include "noServiceChargeChecking.h"
 #include "checkingAccount.h"
 #include "serviceChargeChecking.h"
-#include "ledger.cpp"
 
 bankAccount* setAccount() { // Returns a pointer to bankAccount. The type depends on user input which determines the return value
     std::cout << "What bank account do you wish to open?" << std::endl;
@@ -68,11 +65,13 @@ int main () {
     // ledger
     // prints all values in ledger
     std::cout << "Ledger: " << std::endl;
-    savingsAccount* newPtr = dynamic_cast<savingsAccount*>(ptr);
+    /*savingsAccount* newPtr = dynamic_cast<savingsAccount*>(ptr);
     if (newPtr) {
         newPtr->printLedger(newPtr);
         return 0;
-    }
+    }*/
+   ptr->printLedger();
+    
 
 
     return 0;

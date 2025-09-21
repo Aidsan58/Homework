@@ -11,6 +11,10 @@ class noServiceChargeChecking : public checkingAccount {
     double interest;
     double minimumBalance;
 
+    // creates Ledger instance
+    ledger myLedger[100];
+    int ledgerIndex = 0;
+
 
     void writeCheck() override {
         double checkSize;
@@ -20,6 +24,8 @@ class noServiceChargeChecking : public checkingAccount {
             balance -= checkSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             checkCount += 1;  // Increases the check count to be used by createMonthlyStatement
+            myLedger[ledgerIndex] = ledger(checkSize, TransactionType::CHECK);
+            ledgerIndex++;
         }
         else {
             std::cout << "You don't have enough funds to write this check." << std::endl;
@@ -34,6 +40,8 @@ class noServiceChargeChecking : public checkingAccount {
             balance -= withdrawalSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             withdrawalCount += 1;// Increases the withdrawal count to be used by createMonthlyStatement
+            myLedger[ledgerIndex] = ledger(withdrawalSize, TransactionType::WITHDRAWAL);
+            ledgerIndex++;
         }
         else {  // If the withdrawal would bring the account balance to less than minimumBalance, the transaction is denied
             std::cout << "You don't have enough funds to withdraw this cash." << std::endl;
@@ -47,12 +55,16 @@ class noServiceChargeChecking : public checkingAccount {
         balance += depositSize;
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
         depositCount += 1; // Increases the deposit count to be used by createMonthlyStatement
+        myLedger[ledgerIndex] = ledger(depositSize, TransactionType::DEPOSIT);
+        ledgerIndex++;
     }
 
     void createMonthlyStatement() override {
         std::cout << "You made " << withdrawalCount << " withdrawals, " << depositCount << " deposits, and you wrote " << checkCount << " checks this month." << std::endl;
         std::cout << "Your account balance is now $" << (balance - interest) << "." << std::endl;
     }
+
+    void printLedger();
 };
 
 #endif

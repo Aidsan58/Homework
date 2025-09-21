@@ -20,4 +20,9 @@ double bankAccount::getBalance() {
     return balance;
 }
 
+/*void bankAccount::printLedger() {
+    // empty
+
+}*/
+
 #endif

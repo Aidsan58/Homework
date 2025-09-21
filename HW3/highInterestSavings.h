@@ -9,6 +9,9 @@ class highInterestSavings : public savingsAccount {
     public:
     double interest = 8;
 
+    // creates Ledger instance
+    ledger myLedger[100];
+    int ledgerIndex = 0;
 
     void withdrawMoney() override {
         double withdrawalSize;
@@ -18,6 +21,8 @@ class highInterestSavings : public savingsAccount {
             balance -= withdrawalSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             withdrawalCount += 1;
+            myLedger[ledgerIndex] = ledger(withdrawalSize, TransactionType::WITHDRAWAL);
+            ledgerIndex++;
         }
         else {  // If the withdrawal would bring the account balance to less than minimumBalance, the transaction is denied
             std::cout << "You don't have enough funds to withdraw this cash." << std::endl;
@@ -31,12 +36,16 @@ class highInterestSavings : public savingsAccount {
         balance += depositSize;
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
         depositCount += 1;
+        myLedger[ledgerIndex] = ledger(depositSize, TransactionType::DEPOSIT);
+        ledgerIndex++;
     }
 
     void createMonthlyStatement() override {
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
         std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl;
     }
+
+    void printLedger();
 };
 
 #endif

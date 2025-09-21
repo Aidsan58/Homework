@@ -11,6 +11,10 @@ class certificateOfDeposit : public bankAccount {
     int numCDMaturityMonths;
     int currentCDMonth;
 
+    // creates Ledger instance
+    ledger myLedger[100];
+    int ledgerIndex = 0;
+
     void withdrawMoney() override {
         double withdrawalSize;
         std::cout << "How much money do you wish to withdraw?" << std::endl;
@@ -19,6 +23,8 @@ class certificateOfDeposit : public bankAccount {
             balance -= withdrawalSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             withdrawalCount += 1;
+            myLedger[ledgerIndex] = ledger(withdrawalSize, TransactionType::WITHDRAWAL);
+            ledgerIndex++;
         }
         else {  // If the withdrawal would bring the account balance to less than zero dollars, the transaction is denied
             std::cout << "You don't have enough funds to withdraw this cash." << std::endl;
@@ -32,6 +38,8 @@ class certificateOfDeposit : public bankAccount {
         balance += depositSize; // Increases the deposit count to be used by createMonthlyStatement
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
         depositCount += 1;
+        myLedger[ledgerIndex] = ledger(depositSize, TransactionType::DEPOSIT);
+        ledgerIndex++;
     }
 
     void createMonthlyStatement() override {
@@ -39,6 +47,8 @@ class certificateOfDeposit : public bankAccount {
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
         std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl;
     }
+
+    void printLedger();
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "ledger.h"
 
+
 ledger::ledger(double value, enum TransactionType type) {
     this->value = value;
     this->type = type;

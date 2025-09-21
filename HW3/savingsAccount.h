@@ -10,7 +10,7 @@ class savingsAccount : public bankAccount {
     double interest = 5;
 
     // creates Ledger instance
-    ledger myLedger[10];
+    ledger myLedger[100];
     int ledgerIndex = 0;
 
 
@@ -37,6 +37,8 @@ class savingsAccount : public bankAccount {
         balance += depositSize;
         std::cout << "Your account balance is now $" << balance << "." << std::endl;
         depositCount += 1; // Increases the deposit count to be used by createMonthlyStatement
+        myLedger[ledgerIndex] = ledger(depositSize, TransactionType::DEPOSIT);
+        ledgerIndex++;
     }
 
     void createMonthlyStatement() override {
@@ -44,7 +46,7 @@ class savingsAccount : public bankAccount {
         std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl; // We add interest at the end
     }
 
-    void printLedger(savingsAccount* ptr);
+    void printLedger();
 
 };
 
