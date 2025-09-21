@@ -45,8 +45,7 @@ bankAccount* setAccount() { // Returns a pointer to bankAccount. The type depend
 
 int main () {
 
-    // creates Ledger instance
-    ledger myLedger[100];
+
 
     bankAccount* ptr = setAccount();
     ptr->setData("Aidan", "109402353");
@@ -65,20 +64,9 @@ int main () {
     }
     ptr->createMonthlyStatement();
 
-    // Ledger
-    for (int i = 0; i < 100; i++) {
-        if (myLedger[i].type == WITHDRAWAL) {
-            std::cout << ptr->getName() << " withdrew $" << myLedger.value << "." << std::endl;
-        }
-        if (myLedger[i].type == DEPOSIT) {
-            std::cout << ptr->getName() << " deposited $" << myLedger.value << " into their account." << std::endl;
-        }
-        if (myLedger[i].type == CHECK) {
-            std::cout << ptr->getName() << " wrote a check for $" << myLedger.value << "." << std::endl;
-        }
-    }
+    ptr->printLedger(ptr, savingsAccount->myLedger);
 
-    delete[] ptr; // deletes the instance of the class from memory
+    delete ptr; // deletes the instance of the class from memory
 
     return 0;
 }

@@ -4,10 +4,14 @@
 #define SAVINGS_ACCOUNT_H
 
 #include "bankAccount.h"
+#include "ledger.cpp"
 
 class savingsAccount : public bankAccount {
     public:
     double interest = 5;
+
+    // creates Ledger instance
+    ledger myLedger[100];
 
 
     void withdrawMoney() override {
@@ -18,6 +22,8 @@ class savingsAccount : public bankAccount {
             balance -= withdrawalSize;
             std::cout << "Your account balance is now $" << balance << "." << std::endl;
             withdrawalCount += 1;
+            myLedger[ledgerIndex] = ledger(withdrawalSize, TransactionType::WITHDRAWAL);
+            ledgerIndex++;
         }
         else {  // If the withdrawal would bring the account balance to less than minimumBalance, the transaction is denied
             std::cout << "You don't have enough funds to withdraw this cash." << std::endl;
@@ -37,6 +43,7 @@ class savingsAccount : public bankAccount {
         std::cout << "You made " << withdrawalCount << " withdrawals and " << depositCount << " deposits." << std::endl;
         std::cout << "Your account balance is now $" << (balance + interest) << "." << std::endl; // We add interest at the end
     }
+
 };
 
 #endif

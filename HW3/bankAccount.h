@@ -6,8 +6,9 @@
 
 #include <iostream>
 #include <string>
+#include "ledger.cpp"
 
-class bankAccount {
+class bankAccount : public ledger {
     public:
     std::string name;
     std::string accountNumber;
