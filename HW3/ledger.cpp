@@ -1,24 +1,19 @@
 #include <iostream>
 #include "ledger.h"
 
-ledger::ledger(double value, enum TransactionType type) {
+void ledger::insertEnd(int insertItem, double value, enum TransactionType type)
+{
+    list[length] = insertItem; //insert the item at the end
+    length++; //increment the length
     this->value;
     this->type;
 }
 
-int main() {
-    int *intList;
-    int arraySize;
-
-    std::cout << "Enter array size: ";
-    std::cin >> arraySize;
-    std::cout << std::endl;
-
-    intList = new int[arraySize];
-
-    delete[] intList;
-
-    return 0;
-
+ledger::ledger() {
+    // empty
 }
 
+ledger::ledger(int size) // Taken from page 884 of textbook (C++ Programming)
+ : ledger(size)
+{
+} //end constructor
