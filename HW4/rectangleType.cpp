@@ -74,13 +74,13 @@ rectangleType rectangleType::operator*(const rectangleType& rectangle) const {
 }
 
 bool rectangleType::operator==(const rectangleType& rectangle) const {
-    return (length == rectangle.length &&
-    width == rectangle.width);
+    rectangleType tempRect;
+    return (tempRect.area() == rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 bool rectangleType::operator!=(const rectangleType& rectangle) const {
-    return (length != rectangle.length ||
-    width != rectangle.width);
+    rectangleType tempRect;
+    return (tempRect.area() != rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 rectangleType& rectangleType::operator++() {
@@ -103,6 +103,16 @@ rectangleType rectangleType::operator-(const rectangleType& rectangle) const {
     }
     else std::cout << "This action can't be performed." << std::endl; // If the action fails, we let the user know
     return tempRect; // We return the new value
+}
+
+bool rectangleType::operator>(const rectangleType& rectangle) const {
+    rectangleType tempRect;
+    return (tempRect.area() > rectangle.area()); // Redefined operator to check for area instead of width and length individually
+}
+
+bool rectangleType::operator<(const rectangleType& rectangle) const {
+    rectangleType tempRect;
+    return (tempRect.area() < rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 rectangleType& rectangleType::setLength(double l) {

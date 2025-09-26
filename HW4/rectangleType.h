@@ -26,6 +26,10 @@ protected:
         //Overloads the operator --
     rectangleType operator-(const rectangleType&) const;
         //Overloads the operator -
+    bool operator>(const rectangleType&) const;
+        //Overload the operator greater than
+    bool operator<(const rectangleType&) const;
+        //Overload the operator less than
 
     rectangleType& setLength(double l);
     //Function to set the length.
