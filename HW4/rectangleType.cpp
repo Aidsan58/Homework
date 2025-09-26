@@ -50,11 +50,6 @@ double rectangleType::perimeter() const {
  return 2 * (length + width);
 }
 
-void rectangleType::print() const {
- std::cout << "Length = " << length
- << "; Width = " << width;
-}
-
 rectangleType::rectangleType(double l, double w) {
  setDimension(l, w);
 }
@@ -74,13 +69,11 @@ rectangleType rectangleType::operator*(const rectangleType& rectangle) const {
 }
 
 bool rectangleType::operator==(const rectangleType& rectangle) const {
-    rectangleType tempRect;
-    return (tempRect.area() == rectangle.area()); // Redefined operator to check for area instead of width and length individually
+    return (this->area() == rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 bool rectangleType::operator!=(const rectangleType& rectangle) const {
-    rectangleType tempRect;
-    return (tempRect.area() != rectangle.area()); // Redefined operator to check for area instead of width and length individually
+    return (this->area() != rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 rectangleType& rectangleType::operator++() {
@@ -97,7 +90,7 @@ rectangleType& rectangleType::operator--() {
 
 rectangleType rectangleType::operator-(const rectangleType& rectangle) const {
     rectangleType tempRect;
-    if (tempRect.length > rectangle.length && tempRect.width > rectangle.width) { // If the first rectangle does not have both length and width greater than the second rectangle, the action is not performed
+    if (length > rectangle.length && width > rectangle.width) { // If the first rectangle does not have both length and width greater than the second rectangle, the action is not performed
         tempRect.length = length - rectangle.length;
         tempRect.width = width - rectangle.width;
     }
@@ -106,13 +99,11 @@ rectangleType rectangleType::operator-(const rectangleType& rectangle) const {
 }
 
 bool rectangleType::operator>(const rectangleType& rectangle) const {
-    rectangleType tempRect;
-    return (tempRect.area() > rectangle.area()); // Redefined operator to check for area instead of width and length individually
+    return (this->area() > rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 bool rectangleType::operator<(const rectangleType& rectangle) const {
-    rectangleType tempRect;
-    return (tempRect.area() < rectangle.area()); // Redefined operator to check for area instead of width and length individually
+    return (this->area() < rectangle.area()); // Redefined operator to check for area instead of width and length individually
 }
 
 rectangleType& rectangleType::setLength(double l) {
