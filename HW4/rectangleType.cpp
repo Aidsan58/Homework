@@ -12,6 +12,17 @@ void rectangleFriend(rectangleType recFriendObject) {
     << recFriendObject.area() << std::endl;
 }
 
+std::ostream& operator<< (std::ostream& osObject, const rectangleType& rectangle) {
+    osObject << "Length = " << rectangle.length
+    << "; Width = " << rectangle.width;
+    return osObject;
+}
+
+std::istream& operator>> (std::istream& isObject, rectangleType& rectangle) {
+    isObject >> rectangle.length >> rectangle.width;
+    return isObject;
+}
+
 void rectangleType::setDimension(double l, double w) {
     if (l >= 0)
         length = l;
@@ -48,9 +59,28 @@ rectangleType::rectangleType(double l, double w) {
  setDimension(l, w);
 }
 
-rectangleType::rectangleType() {
- length = 0;
- width = 0;
+rectangleType rectangleType::operator+(const rectangleType& rectangle) const {
+    rectangleType tempRect;
+    tempRect.length = length + rectangle.length;
+    tempRect.width = width + rectangle.width;
+    return tempRect;
+}
+
+rectangleType rectangleType::operator*(const rectangleType& rectangle) const {
+    rectangleType tempRect;
+    tempRect.length = length * rectangle.length;
+    tempRect.width = width * rectangle.width;
+    return tempRect;
+}
+
+bool rectangleType::operator==(const rectangleType& rectangle) const {
+    return (length == rectangle.length &&
+    width == rectangle.width);
+}
+
+bool rectangleType::operator!=(const rectangleType& rectangle) const {
+    return (length != rectangle.length ||
+    width != rectangle.width);
 }
 
 rectangleType& rectangleType::setLength(double l) {

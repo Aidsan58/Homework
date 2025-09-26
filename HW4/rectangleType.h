@@ -1,5 +1,9 @@
+#include <iostream>
+
 class rectangleType {
     friend void rectangleFriend(rectangleType recObject);
+    friend std::ostream& operator<<(std::ostream&, const rectangleType&);
+    friend std::istream& operator>>(std::istream&, rectangleType&);
 public:
     void setDimension(double l, double w);
     double getLength() const;
@@ -7,7 +11,16 @@ public:
     double area() const;
     double perimeter() const;
     void print() const;
-    rectangleType();
+
+    rectangleType operator+(const rectangleType&) const;
+        //Overload the operator +
+    rectangleType operator*(const rectangleType&) const;
+        //Overload the operator *
+    bool operator==(const rectangleType&) const;
+        //Overload the operator ==
+    bool operator!=(const rectangleType&) const;
+        //Overload the operator !=
+
     rectangleType& setLength(double l);
     //Function to set the length.
     //Postcondition: length = l
