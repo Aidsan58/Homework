@@ -1,4 +1,5 @@
 class rectangleType {
+    friend void rectangleFriend(rectangleType recObject);
 public:
     void setDimension(double l, double w);
     double getLength() const;
@@ -6,6 +7,7 @@ public:
     double area() const;
     double perimeter() const;
     void print() const;
+    rectangleType();
     rectangleType& setLength(double l);
     //Function to set the length.
     //Postcondition: length = l
