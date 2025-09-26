@@ -4,7 +4,7 @@ class rectangleType {
     friend void rectangleFriend(rectangleType recObject);
     friend std::ostream& operator<<(std::ostream&, const rectangleType&);
     friend std::istream& operator>>(std::istream&, rectangleType&);
-public:
+protected:
     void setDimension(double l, double w);
     double getLength() const;
     double getWidth() const;
@@ -20,6 +20,12 @@ public:
         //Overload the operator ==
     bool operator!=(const rectangleType&) const;
         //Overload the operator !=
+    rectangleType& operator++();
+        //Overload the operator ++
+    rectangleType& operator--();
+        //Overloads the operator --
+    rectangleType operator-(const rectangleType&) const;
+        //Overloads the operator -
 
     rectangleType& setLength(double l);
     //Function to set the length.

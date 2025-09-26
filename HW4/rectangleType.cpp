@@ -83,6 +83,28 @@ bool rectangleType::operator!=(const rectangleType& rectangle) const {
     width != rectangle.width);
 }
 
+rectangleType& rectangleType::operator++() {
+    length++;
+    width++;
+    return *this; // Our return value points to rectangleType with updated values
+}
+
+rectangleType& rectangleType::operator--() {
+    length--;
+    width--;
+    return *this; // Our return value points to rectangleType with updated values
+}
+
+rectangleType rectangleType::operator-(const rectangleType& rectangle) const {
+    rectangleType tempRect;
+    if (tempRect.length > rectangle.length && tempRect.width > rectangle.width) { // If the first rectangle does not have both length and width greater than the second rectangle, the action is not performed
+        tempRect.length = length - rectangle.length;
+        tempRect.width = width - rectangle.width;
+    }
+    else std::cout << "This action can't be performed." << std::endl; // If the action fails, we let the user know
+    return tempRect; // We return the new value
+}
+
 rectangleType& rectangleType::setLength(double l) {
  length = l;
  return *this;
