@@ -1,0 +1,7 @@
+Write a program that prompts the user to enter a person’s date of birth
+in numeric form such as 8-27-1980. The program then outputs the
+date of birth in the form: August 27, 1980. Your program must contain at least two exception classes: invalidDay and invalidMonth.
+If the user enters an invalid value for day, then the program should
+throw and catch an invalidDay object. Follow similar conventions for
+the invalid values of month and year. (Note that your program must
+handle a leap year.)
