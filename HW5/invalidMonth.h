@@ -8,7 +8,7 @@ public:
 
     // Class constructor
     invalidMonth() {
-    message = "The input year is invalid.";
+    message = "The input month is invalid.";
     }
 
     // Overloaded constructor with msg string parameter

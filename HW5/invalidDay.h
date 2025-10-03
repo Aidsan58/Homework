@@ -10,7 +10,7 @@ public:
 
     // Class constructor
     invalidDay() {
-    message = "The input year is invalid.";
+    message = "The input day is invalid.";
     }
 
     // Overloaded constructor with msg string parameter
