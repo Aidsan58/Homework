@@ -96,9 +96,9 @@ int main() {
         year = dateOfBirth[2];
 
         try {                                               // Our repetitive try catch blocks. We have three try blocks (day, month, year), 
-            if (checkMonth(month) == "invalid") {  // and three catch blocks. Having the classes makes this a lot simpler, and we just have to
-                throw invalidMonth();                         // Call their what() functions in our catch block.
-            }                                                 // We check the month first because the day logic will override it.
+            if (checkMonth(month) == "invalid") {           // and three catch blocks. Having the classes makes this a lot simpler, and we just have to
+                throw invalidMonth();                       // Call their what() functions in our catch block.
+            }                                               // We check the month first because the day logic will override it.
             if (checkDay(day, month, year) == "invalid") {
                 throw invalidDay();
             }
