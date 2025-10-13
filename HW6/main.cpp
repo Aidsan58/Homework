@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "starFunction.h" // recursive function code
 
 int main() {
     int myNum;
@@ -7,6 +8,7 @@ int main() {
     std::cin >> myNum;
     std::cout << std::endl;
 
-    int u = myNum;
-    starFunction(myNum, u);
+    int goesDown = myNum;
+    int goesUp = 0; // When goesDown reaches zero, then this number starts incrementing, that way we get the intended output with the stars
+    starFunction(myNum, goesDown, goesUp);
 }
