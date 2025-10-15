@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+
+/*
 void starFunction(int myNum, int goesDown, int goesUp) {
     if (goesDown != 0) {
         for (int i = 0; i < goesDown; ++i) {
@@ -19,4 +21,20 @@ void starFunction(int myNum, int goesDown, int goesUp) {
         starFunction(myNum, goesDown, goesUp); // We already increased goesUp, so we don't need to change any numbers in the function call
     }
     
+}
+    */
+
+void starFunction(int whiteSpace, int spaceNum) {
+    if (spaceNum < 1) return; // By this point everything should be printed and we can then terminate the program
+    for (int j = 1; j <= spaceNum; ++j) {
+        if (j % 2 != 0) { // If j is odd
+            std::cout << "*";
+        }
+        else { // If the number (j) is even
+            std::cout << " ";
+        }
+    }
+    std::cout << std::endl;
+    starFunction(whiteSpace + 1, spaceNum - 2);
+
 }
