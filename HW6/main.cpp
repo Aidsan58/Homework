@@ -18,9 +18,10 @@ int main() {
     starFunction(myNum, goesDown, goesUp);
     */
 
-    int whiteSpace = 0;
-    int spaceNum = ((myNum * 2) - 1);
-    starFunction(whiteSpace, spaceNum);
+    int firstHalfNum = 1;
+    int whiteSpace = myNum - 1;
+    int spaceNum = firstHalfNum;
+    starFunction(whiteSpace, spaceNum, myNum, firstHalfNum);
 
     return 0;
 }
