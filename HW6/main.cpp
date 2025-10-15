@@ -12,15 +12,10 @@ int main() {
         std::cin >> myNum;
         std::cout << std::endl;
     }
-    /*
-    int goesDown = myNum;
-    int goesUp = 0; // When goesDown reaches zero, then this number starts incrementing, that way we get the intended output with the stars
-    starFunction(myNum, goesDown, goesUp);
-    */
 
     int firstHalfNum = 1;
-    int whiteSpace = myNum - 1;
-    int spaceNum = firstHalfNum;
+    int whiteSpace = myNum - 1; // We start (and end) with whitespaces being equal to one less than the number of lines (represented by myNum)
+    int spaceNum = firstHalfNum; // At first spaceNum and firstHalfNum are the same, but spaceNum diverges from firstHalfNum when we get to the second half of the diamond shape
     starFunction(whiteSpace, spaceNum, myNum, firstHalfNum);
 
     return 0;
