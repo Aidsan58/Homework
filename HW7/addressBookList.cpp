@@ -31,7 +31,8 @@ void addressBookList::deleteAddress(const addressType& removeAddress) {
 
         if (prev == nullptr) {
             head = p->next; // Define the head (there's obviously no previous entry because this is the first)
-        } else {
+        } 
+        else {
             prev->next = p->next; // If we found the address we're looking for, we basically pop it out of the list by linking the previous entry and the next entry together
         }
 
