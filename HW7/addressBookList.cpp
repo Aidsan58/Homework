@@ -5,12 +5,12 @@ void addressBookList::insertAddress(const addressType& newAddress) {
     if (!head) {
         head = newNode; // If the head of the list hasn't been defined (this should mean the list is empty), we make newAddress the head of the linked list
     }
-    else {              // If the head has been defined, we insert newAddress after it
+    else {              // If the head has been defined, we insert newAddress after whatever the last entry is
         Node* p = head; // Temporary variable that maps to head
-        while (p->next) {
+        while (p->next) { // We keep iterating until p->next is invalid, which probably means it returns nullptr
             p = p->next;
         }
-        p->next = newNode;
+        p->next = newNode; // Once we reach the end, we insert newNode at the end
     }
 
 }
@@ -37,4 +37,17 @@ void addressBookList::deleteAddress(const addressType& removeAddress) {
 
         std::cout << "Deleted street address: " << removeAddress.streetAddress << std::endl;
         delete p; // Clears temporary variable from memory
+}
+
+void addressBookList::print() {
+        Node* p = head;
+        if (p == nullptr) { // If the linked list is empty
+            std::cout << "Address book is empty." << std::endl;
+            return;
+        }
+
+        while (p != nullptr) { // While p is not nullptr
+            std::cout << "Address: " << p->info.streetAddress << std::endl; // Prints the address of an entry
+            p = p->next; // Goes to the next entry
+        }
     }
