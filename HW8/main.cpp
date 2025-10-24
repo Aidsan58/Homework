@@ -1,48 +1,23 @@
 #include "stackType.h"
 #include <iostream>
 
-using namespace std;
 
-void testCopyConstructor(stackType<int> otherStack);
+int main() {
+    int decimalNum;
+    int base;
+    base = 2;
+    std::cout << "Enter number in decimal: ";
+    std::cin >> decimalNum;
+    std::cout << std::endl;
+    std::cout << "Decimal " << decimalNum << " = ";
 
-int main()
-{
-    stackType<int> stack(50);
-    stackType<int> copyStack(50);
-    stackType<int> dummyStack(100);
-    stack.initializeStack();
-    stack.push(85);
-    stack.push(28);
-    stack.push(56);
-    copyStack = stack; //copy stack into copyStack
-    cout << "The elements of copyStack: ";
-    while (!copyStack.isEmptyStack()) //print copyStack
-    {
-    cout << copyStack.top() << " ";
-    copyStack.pop();
+    stackType<int> myStack; // Instantiation of stackType with int type
+    int myNum = decimalNum;
+    while (myNum > 0) {
+        myNum = myNum / base;
+        myStack.push(myNum);
+        std::cout << myStack.top() % base;
     }
-    cout << endl;
-    copyStack = stack;
-    testCopyConstructor(stack); //test the copy constructor
-    if (!stack.isEmptyStack())
-    cout << "The original stack is not empty." << endl
-    << "The top element of the original stack: "
-    << copyStack.top() << endl;
-    dummyStack = stack; //copy stack into dummyStack
-    cout << "The elements of dummyStack: ";
-    while (!dummyStack.isEmptyStack()) //print dummyStack
-    {
-    cout << dummyStack.top() << " ";
-    dummyStack.pop();
-    }
-    cout << endl;
+    std::cout << " binary" << endl;
     return 0;
-}
-
-void testCopyConstructor(stackType<int> otherStack)
-{
- if (!otherStack.isEmptyStack())
- cout << "otherStack is not empty." << endl
- << "The top element of otherStack: "
- << otherStack.top() << endl;
 }
