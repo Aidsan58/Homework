@@ -18,7 +18,7 @@ int main() {
         myStack.push(remainder); // Add value of remainder to stack
         myNum = myNum / base; // Divide the value of myNum by 2
     }
-    while (myStack.isEmptyStack() == false) { // We want to print in reverse of the order that we added
+    while (myStack.isEmptyStack() == false) { // We want to print in reverse of the order that we added and make sure it's not empty, this way we don't have leading zeros
         std::cout << myStack.top(); // Print the value at the top of the stack
         myStack.pop(); // Pop the top from the stack and go back to the start of the loop until we have no more entries in the stack
     }
