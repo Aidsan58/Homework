@@ -3,7 +3,7 @@
 
 
 int main() {
-    int decimalNum;
+    int decimalNum; // Converting user-input base 10 value to binary value
     int base;
     base = 2; // Binary is base 2
     std::cout << "Enter number in decimal: ";
