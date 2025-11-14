@@ -3,6 +3,7 @@ int numMergeComparisons = 0; // to be used to find the number of comparisons
 
 // To be used on list 3
 // We change all the functions so that they work for arrays rather than linked lists.
+// I used the following article as a basis for understanding the algorithm: https://www.geeksforgeeks.org/dsa/merge-sort/
 template <class elemType>
 void mergeList(elemType list[], int left, int mid, int right)
 {
@@ -22,30 +23,40 @@ void mergeList(elemType list[], int left, int mid, int right)
  {
  tempList2[i] = list[mid + i + 1];
  }
-        
- // merge back into list[left..right]
+ // merge temp arrays back into list
  int i = 0;      // index for tempList1
  int j = 0;      // index for tempList2
  int k = left;   // index for original list
-
  while (i < size1 && j < size2)
  {
      if (tempList1[i] <= tempList2[j]) // for tempList1
-         list[k += 1] = tempList1[i += 1];
+     {
+         list[k] = tempList1[i];
+         i += 1;
+     }
      else // for tempList2
-         list[k += 1] = tempList2[j += 1];
- numMergeComparisons += 1;
+     {
+         list[k] = tempList2[j];
+         j += 1;
+     }
+    numMergeComparisons += 1;
  }
-
  // copy the leftover elements
  while (i < size1) // copy from tempList1 to list
-        list[k += 1] = tempList1[i += 1];
+ {
+        list[k] = tempList1[i];
+        i += 1;
+        k += 1;
+ }
     while (j < size2) // copy from tempList2 to list
-        list[k += 1] = tempList2[j += 1];
+{
+        list[k] = tempList2[j];
+        j += 1;
+        k += 1;
+}
  // Clean up memory
  delete[] tempList1;
  delete[] tempList2;
-
 }//end mergeList
 
 // Recursive function
@@ -54,7 +65,7 @@ void recMergeSort(elemType list[], int left, int right)
 {
  if (left < right) 
  {
- int mid = (left + right) / 2; // define the midpoint, which will be moved up as the recursive function is called again and again.
+ int mid = (left + right) / 2; // define the midpoint, which will be moved up as the recursive function is called again and again. This essentially replaces divideList
  recMergeSort(list, left, mid);
  recMergeSort(list, mid + 1, right);
  mergeList(list, left, mid, right);
