@@ -23,6 +23,7 @@ void mergeList(elemType list[], int left, int mid, int right)
  {
  tempList2[i] = list[mid + i + 1];
  }
+
  // merge temp arrays back into list
  int i = 0;      // index for tempList1
  int j = 0;      // index for tempList2
@@ -41,18 +42,19 @@ void mergeList(elemType list[], int left, int mid, int right)
      }
     numMergeComparisons += 1;
  }
+ 
  // copy the leftover elements
  while (i < size1) // copy from tempList1 to list
  {
-        list[k] = tempList1[i];
-        i += 1;
-        k += 1;
+    list[k] = tempList1[i];
+    i += 1;
+    k += 1;
  }
-    while (j < size2) // copy from tempList2 to list
+ while (j < size2) // copy from tempList2 to list
 {
-        list[k] = tempList2[j];
-        j += 1;
-        k += 1;
+    list[k] = tempList2[j];
+    j += 1;
+    k += 1;
 }
  // Clean up memory
  delete[] tempList1;
