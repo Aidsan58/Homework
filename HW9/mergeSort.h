@@ -2,26 +2,7 @@
 int numMergeComparisons = 0; // to be used to find the number of comparisons
 
 // To be used on list 3
-// We change all the functions so that they work for arrays rather than linked lists. I moved them around to make more sense to me
-template <class elemType>
-void mergeSort(elemType list[], int length)
-{
- recMergeSort(list, 0, length - 1);
-} //end mergeSort
-
-// Recursive function
-template <class elemType>
-void recMergeSort(elemType list[], int left, int right)
-{
- if (left < right) 
- {
- int mid = (left + right) / 2;
- recMergeSort(list, left, mid);
- recMergeSort(list, mid + 1, right);
- mergeList(list, left, mid, right);
- }
-} //end recMergeSort
-
+// We change all the functions so that they work for arrays rather than linked lists.
 template <class elemType>
 void mergeList(elemType list[], int left, int mid, int right)
 {
@@ -43,19 +24,18 @@ void mergeList(elemType list[], int left, int mid, int right)
  }
         
  // merge back into list[left..right]
-  int i = 0;      // index for tempList1
-    int j = 0;      // index for tempList2
-    int k = left;   // index for original list
+ int i = 0;      // index for tempList1
+ int j = 0;      // index for tempList2
+ int k = left;   // index for original list
 
-    while (i < size1 && j < size2)
-    {
-        numMergeComparisons++; // count comparison
-
-        if (tempList1[i] <= tempList2[j])
-            list[k++] = tempList1[i++];
-        else
-            list[k++] = tempList2[j++];
-    }
+ while (i < size1 && j < size2)
+ {
+     numMergeComparisons++; // count comparison
+     if (tempList1[i] <= tempList2[j])
+         list[k++] = tempList1[i++];
+     else
+         list[k++] = tempList2[j++];
+ }
 
  // copy the leftover elements
  while (i < size1)
@@ -66,3 +46,22 @@ void mergeList(elemType list[], int left, int mid, int right)
  delete[] tempList2;
 
 }//end mergeList
+
+// Recursive function
+template <class elemType>
+void recMergeSort(elemType list[], int left, int right)
+{
+ if (left < right) 
+ {
+ int mid = (left + right) / 2;
+ recMergeSort(list, left, mid);
+ recMergeSort(list, mid + 1, right);
+ mergeList(list, left, mid, right);
+ }
+} //end recMergeSort
+
+template <class elemType>
+void mergeSort(elemType list[], int length)
+{
+ recMergeSort(list, 0, length - 1);
+} //end mergeSort

@@ -5,7 +5,7 @@
 //header files
 #include "quickSort.h"
 #include "insertionSort.h"
-//#include "mergeSort.h"
+#include "mergeSort.h"
 
 int main()
 {
@@ -36,6 +36,11 @@ int main()
     insertionSort(list2, 5000);
     std::cout << "Number of assignments using insertion sort: " << numInsertAssignments << std::endl;
     std::cout << "Number of comparisons using insertion sort: " << numInsertComparisons << std::endl;
+
+    // Sort list3 using merge sort
+    mergeSort(list3, 5000);
+    std::cout << "Number of comparisons using merge sort: " << numMergeComparisons << std::endl;
+ 
 
     return 0;
 }
