@@ -2,6 +2,7 @@ int numQuickAssignments = 0; // to be used to find the number of assignments
 int numQuickComparisons = 0; // to be used to find the number of comparisons
 
 // To be used on list 1
+// Largely unchanged from the texbook, save for assignment and comparison counter variables.
 template <class elemType>
 void swap(elemType list[], int first, int second)
 {

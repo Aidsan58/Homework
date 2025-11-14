@@ -2,6 +2,7 @@ int numInsertAssignments = 0; // to be used to find the number of assignments
 int numInsertComparisons = 0; // to be used to find the number of comparisons
 
 // To be used on list 2
+// Largely unchanged from the texbook, save for assignment and comparison counter variables.
 template <class elemType>
 void insertionSort(elemType list[], int length)
 {
