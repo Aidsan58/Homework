@@ -2,108 +2,58 @@
 int numMergeComparisons = 0; // to be used to find the number of comparisons
 
 // To be used on list 3
+// We change all the functions so that they work for arrays rather than linked lists. I moved them around to make more sense to me
 template <class elemType>
-void divideList(elemType list[], int length)
+void mergeSort(elemType list[], int length)
 {
- nodeType<Type>* middle;
- nodeType<Type>* current;
- if (first1 == nullptr) //list is empty
- first2 = nullptr;
- else if (first1->link == nullptr) //list has only one node
- first2 = nullptr;
- else
- {
- middle = first1;
- current = first1->link;
- if (current != nullptr) //list has more than two nodes
- current = current->link;
- while (current != nullptr)
- {
- middle = middle->link;
- current = current->link;
- if (current != nullptr)
- current = current->link;
- } //end while
- first2 = middle->link; //first2 points to the first
- //node of the second sublist
- middle->link = nullptr; //set the link of the last node
- //of the first sublist to nullptr
- } //end else
-} //end divideList
+ recMergeSort(list, 0, length - 1);
+} //end mergeSort
 
+// Recursive function
 template <class elemType>
-void mergeList(elemType list[], int length)
+void recMergeSort(elemType list[], int left, int right)
 {
- nodeType<Type> *lastSmall; //pointer to the last node of
- //the merged list
- nodeType<Type> *newHead; //pointer to the merged list
- if (first1 == nullptr) //the first sublist is empty
- return first2;
- else if (first2 == nullptr) //the second sublist is empty
- return first1;
- else
+ if (left < right) 
  {
- if (first1->info < first2->info) //compare the
- //first nodes
- {
- newHead = first1;
- first1 = first1->link;
- lastSmall = newHead;
- }
- else
- {
- newHead = first2;
- first2 = first2->link;
- lastSmall = newHead;
- }
- while (first1 != nullptr && first2 != nullptr)
- {
- if (first1->info < first2->info)
- {
- lastSmall->link = first1;
- lastSmall = lastSmall->link;
- first1 = first1->link;
- }
- else
- {
- lastSmall->link = first2;
- lastSmall = lastSmall->link;
- first2 = first2->link;
- }
- } //end while
- if (first1 == nullptr) //first sublist exhausted first
- lastSmall->link = first2;
- else //second sublist exhausted first
- lastSmall->link = first1;
- return newHead;
- }
-}//end mergeList
-
-template <class elemType>
-void recMergeSort(elemType list[], int length)
-{
- nodeType<Type> *otherHead;
- if (head != nullptr) //if the list is not empty
- if (head->link != nullptr) //if the list has more than
- //one node
- {
- divideList(head, otherHead);
- recMergeSort(head);
- recMergeSort(otherHead);
- head = mergeList(head, otherHead);
+ int mid = (left + right) / 2;
+ recMergeSort(list, left, mid);
+ recMergeSort(list, mid + 1, right);
+ mergeList(list, left, mid, right);
  }
 } //end recMergeSort
 
 template <class elemType>
-void mergeSort(elemType list[], int length)
+void mergeList(elemType list[], int left, int mid, int right)
 {
- recMergeSort(first);
- if (first == nullptr)
- last = nullptr;
- else
- {
- last = first;
- while (last->link != nullptr)
- last = last->link;
+ int size1 = mid - left + 1;
+ int size2 = right - mid;
+
+ // temporary arrays
+ elemType* tempList1 = new elemType[size1];
+ elemType* tempList2 = new elemType[size2];
+
+ // Copy over the data
+ for (int i = 0; i < length i++) {
+    if (i < size1) {
+        tempList1[i] = list[i];
+    }
+    else {
+        tempList2[i - size1] = list[i]; // Once we exceed the size of size1, we start copying to tempList2
+    }
  }
-} //end mergeSort
+
+ // merge back into list[left..right]
+  for (int i = 0; i < length i++) {
+    if (i < size1) {
+        list[i] = tempList1[i];
+    }
+    else {
+        list[i] = tempList2[i - size1]; // Once we exceed the size of size1, we start copying from tempList2
+    }
+ }
+
+ // copy the leftover elements
+ delete tempList1;
+ delete tempList2;
+
+}//end mergeList
