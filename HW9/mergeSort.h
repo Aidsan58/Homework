@@ -33,27 +33,36 @@ void mergeList(elemType list[], int left, int mid, int right)
  elemType* tempList2 = new elemType[size2];
 
  // Copy over the data
- for (int i = 0; i < length i++) {
-    if (i < size1) {
-        tempList1[i] = list[i];
-    }
-    else {
-        tempList2[i - size1] = list[i]; // Once we exceed the size of size1, we start copying to tempList2
-    }
+ for (int i = 0; i < size1; i++)
+ {
+ tempList1[i] = list[left + i];
  }
-
+ for (int i = 0; i < size2; i++)
+ {
+ tempList2[i] = list[mid + 1 + i];
+ }
+        
  // merge back into list[left..right]
-  for (int i = 0; i < length i++) {
-    if (i < size1) {
-        list[i] = tempList1[i];
+  int i = 0;      // index for tempList1
+    int j = 0;      // index for tempList2
+    int k = left;   // index for original list
+
+    while (i < size1 && j < size2)
+    {
+        numMergeComparisons++; // count comparison
+
+        if (tempList1[i] <= tempList2[j])
+            list[k++] = tempList1[i++];
+        else
+            list[k++] = tempList2[j++];
     }
-    else {
-        list[i] = tempList2[i - size1]; // Once we exceed the size of size1, we start copying from tempList2
-    }
- }
 
  // copy the leftover elements
- delete tempList1;
- delete tempList2;
+ while (i < size1)
+        list[k++] = tempList1[i++];
+    while (j < size2)
+        list[k++] = tempList2[j++];
+ delete[] tempList1;
+ delete[] tempList2;
 
 }//end mergeList
