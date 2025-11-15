@@ -1,4 +1,4 @@
-(DVD Store Program) In Programming Exercise 14 in Chapter 16,
+11. (DVD Store Program) In Programming Exercise 14 in Chapter 16,
 you were asked to design and implement a class to maintain customer
 data in a linked list. Because the search on a linked list is sequential
 and, therefore, can be time-consuming, design and implement the
