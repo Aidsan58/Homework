@@ -1,3 +1,5 @@
+#include "dvdBinaryTree.h"
+
 void dvdBinaryTree::searchDVDList(string title,
  bool& found,
  nodeType<dvdType>* &current) const
@@ -14,7 +16,8 @@ void dvdBinaryTree::searchDVDList(string title,
  //of the binary tree
  found = false; //set found to false
  while (current != nullptr && !found) //search the tree
- if (current->info == temp) found = true;   //item is found
+ if (current->info == temp) 
+ found = true; //item is found
  else if (current->info > temp)
  current = current->lLink;
  else

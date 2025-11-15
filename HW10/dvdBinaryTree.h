@@ -1,3 +1,6 @@
+#include "binarySearchTree.h"
+#include "dvdType.h"
+
 class dvdBinaryTree:public bSearchTreeType<dvdType>
 {
 public:

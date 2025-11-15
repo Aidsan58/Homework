@@ -1,3 +1,5 @@
+#include "binaryTreeType.h"
+
 template <class elemType>
 class bSearchTreeType: public binaryTreeType<elemType>
 {
