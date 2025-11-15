@@ -24,6 +24,7 @@ void dvdBinaryTree::searchDVDList(string title,
  current = current->rLink;
  } //end else
 } //end searchDVDList
+
 void dvdBinaryTree::inorderTitle
  (nodeType<dvdType> *p) const
 {
@@ -34,6 +35,7 @@ void dvdBinaryTree::inorderTitle
  inorderTitle(p->rLink);
  }
 }
+
 void dvdBinaryTree::dvdPrintTitle() const
 {
  inorderTitle(root);
