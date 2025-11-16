@@ -9,8 +9,8 @@ class dvdType
 {
 friend istream& operator>>(istream& in, dvdType& myDvd)
 {
-    getline(in, myDvd.dvdTitle); // we use getLine for titles with spaces
-    return in;
+getline(in, myDvd.dvdTitle); // we use getLine for titles with spaces
+return in;
 } // for user input as dvdType. 
 public:
  //Overload relational operators
