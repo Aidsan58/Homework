@@ -219,10 +219,14 @@ int binaryTreeType<elemType>::max(int x, int y) const
 template <class elemType>
 int binaryTreeType<elemType>::nodeCount(nodeType<elemType>* p) const
 {
-    if (p == nullptr)
-        return 0;
-    else
-        return 1 + nodeCount(p->lLink) + nodeCount(p->rLink);
+if (p == nullptr) // if the tree is empty, return 0
+{
+return 0;
+}
+else
+{
+return 1 + nodeCount(p->lLink) + nodeCount(p->rLink); // if not empty, goes down the list and adds value for every node
+}
 }
 
 #endif
