@@ -11,3 +11,9 @@ int customerBTreeType<elemType>::getNumItemsRented()
 {
 return treeNodeCount();
 } //end getNumItemsRented
+
+template <class elemType>
+void customerBTreeType<elemType>::returnItem(const elemType& deleteItem) 
+{
+deleteNode(deleteItem);
+} //end getNumItemsRented

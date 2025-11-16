@@ -8,4 +8,6 @@ class customerBTreeType: public bSearchTreeType<elemType>
  void rentItem(const elemType& insertItem);
  // gets the number of items rented per customer. calls treeNodeCount()
  int getNumItemsRented();
+ // allows the customer to return a DVD. uses deleteNode
+ void returnItem(const elemType& deleteItem);
 };
