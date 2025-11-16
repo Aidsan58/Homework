@@ -2,29 +2,17 @@
 #define DVD_TYPE_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class dvdType
 {
- friend ostream& operator<< (ostream&, const dvdType&);
+friend istream& operator>>(istream& in, dvdType& myDvd)
+{
+    getline(in, myDvd.dvdTitle); // we use getLine for titles with spaces
+    return in;
+} // for user input as dvdType. 
 public:
- void setDVDInfo(string title, string star1,
- string star2, string producer,
- string director, string productionCo,
- int setInStock);
- int getNoOfCopiesInStock() const;
- void checkOut();
- void checkIn();
- void printTitle() const;
- void printInfo() const;
- bool checkTitle(string title);
- void updateInStock(int num);
- void setCopiesInStock(int num);
- string getTitle() const;
- dvdType(string title = "", string star1 = "",
- string star2 = "", string producer = "",
- string director = "", string productionCo = "",
- int setInStock = 0);
  //Overload relational operators
  bool operator==(const dvdType&) const;
  bool operator!=(const dvdType&) const;

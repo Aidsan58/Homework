@@ -46,12 +46,7 @@ public:
  //binary tree.
  //Postcondition: Returns the number of leaves in the
  // binary tree.
- void destroyTree();
- //Function to destroy the binary tree.
- //Postcondition: Memory space occupied by each node
- // is deallocated.
- // root = nullptr;
- virtual bool search(const elemType& searchItem) const = 0;
+ //virtual bool search(const elemType& searchItem) const = 0;
  //Function to determine if searchItem is in the binary
  //tree.
  //Postcondition: Returns true if searchItem is found in
@@ -71,22 +66,16 @@ public:
  // If the binary tree is empty or
  // deleteItem is not in the binary tree,
  // an appropriate message is printed.
- binaryTreeType(const binaryTreeType<elemType>& otherTree);
  //Copy constructor
  binaryTreeType();
  //Default constructor
- ~binaryTreeType();
- //Destructor
 protected:
  nodeType<elemType> *root;
 private:
- void copyTree(nodeType<elemType>* &copiedTreeRoot,
- nodeType<elemType>* otherTreeRoot);
  //Makes a copy of the binary tree to which
  //otherTreeRoot points.
  //Postcondition: The pointer copiedTreeRoot points to
  // the root of the copied binary tree.
- void destroy(nodeType<elemType>* &p);
  //Function to destroy the binary tree to which p points.
  //Postcondition: Memory space occupied by each node, in
  // the binary tree to which p points, is
@@ -122,7 +111,6 @@ private:
  //the binary tree to which p points.
  //Postcondition: The number of nodes in the binary
  // tree to which p points is returned.
- int leavesCount(nodeType<elemType> *p) const;
  //Function to determine the number of leaves in
  //the binary tree to which p points
  //Postcondition: The number of leaves in the binary

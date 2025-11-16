@@ -13,12 +13,14 @@ class customerBTreeType: public bSearchTreeType<elemType>
  int getNumItemsRented();
  // allows the customer to return a DVD. uses deleteNode
  void returnItem(const elemType& deleteItem);
+ //Default constructor
+ customerBTreeType();
 };
 
 template <class elemType>
 void customerBTreeType<elemType>::rentItem(const elemType& insertItem)
 {
-insert(insertItem);
+this->insert(insertItem);
 } //end rentItem
 
 template <class elemType>
@@ -30,7 +32,10 @@ return this->treeNodeCount(); // specify declaration
 template <class elemType>
 void customerBTreeType<elemType>::returnItem(const elemType& deleteItem) 
 {
-deleteNode(deleteItem);
+this->deleteNode(deleteItem);
 } //end getNumItemsRented
+
+template <class elemType>
+customerBTreeType<elemType>::customerBTreeType() {}
 
 #endif

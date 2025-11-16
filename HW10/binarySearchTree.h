@@ -7,12 +7,6 @@ template <class elemType>
 class bSearchTreeType: public binaryTreeType<elemType>
 {
 public:
- bool search(const elemType& searchItem) const;
- //Function to determine if searchItem is in the binary
- //search tree.
- //Postcondition: Returns true if searchItem is found in
- // the binary search tree; otherwise,
- // returns false.
  void insert(const elemType& insertItem);
  //Function to insert insertItem in the binary search tree.
  //Postcondition: If there is no node in the binary search
@@ -112,7 +106,6 @@ void bSearchTreeType<elemType>::deleteFromTree
  trailCurrent = current;
  current = current->rLink;
  }//end while
- nodeType<elemType> *info = current->info;
  if (trailCurrent == nullptr) //current did not move;
  //current == p->lLink; adjust p
  p->lLink = current->lLink;
