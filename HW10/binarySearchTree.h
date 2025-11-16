@@ -40,6 +40,7 @@ template <class elemType>
 void bSearchTreeType<elemType>::insert
  (const elemType& insertItem)
 {
+ nodeType<elemType> *root = this->root;
  nodeType<elemType> *current; //pointer to traverse the tree
  nodeType<elemType> *trailCurrent = nullptr; //pointer behind current
  nodeType<elemType> *newNode; //pointer to create the node
@@ -111,7 +112,7 @@ void bSearchTreeType<elemType>::deleteFromTree
  trailCurrent = current;
  current = current->rLink;
  }//end while
- ->info = current->info;
+ nodeType<elemType> *info = current->info;
  if (trailCurrent == nullptr) //current did not move;
  //current == p->lLink; adjust p
  p->lLink = current->lLink;
@@ -125,6 +126,7 @@ template <class elemType>
 void bSearchTreeType<elemType>::deleteNode
  (const elemType& deleteItem)
 {
+ nodeType<elemType> *root = this->root;
  nodeType<elemType> *current; //pointer to traverse the tree
  nodeType<elemType> *trailCurrent; //pointer behind current
  bool found = false;

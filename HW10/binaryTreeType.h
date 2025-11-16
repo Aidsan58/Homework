@@ -1,6 +1,9 @@
 #ifndef BINARY_TREE_TYPE_H
 #define BINARY_TREE_TYPE_H
 
+#include <iostream>
+using namespace std;
+
 //Definition of the node
 template <class elemType>
 struct nodeType

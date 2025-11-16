@@ -18,13 +18,13 @@ class customerBTreeType: public bSearchTreeType<elemType>
 template <class elemType>
 void customerBTreeType<elemType>::rentItem(const elemType& insertItem)
 {
-insert(InsertItem);
+insert(insertItem);
 } //end rentItem
 
 template <class elemType>
 int customerBTreeType<elemType>::getNumItemsRented() 
 {
-return treeNodeCount();
+return this->treeNodeCount(); // specify declaration
 } //end getNumItemsRented
 
 template <class elemType>
