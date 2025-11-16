@@ -20,8 +20,10 @@ public:
  bool operator<=(const dvdType&) const;
  bool operator>(const dvdType&) const;
  bool operator>=(const dvdType&) const;
-private:
+ // constructor
+ dvdType();
  string dvdTitle;
+private:
  string movieStar1;
  string movieStar2;
  string movieProducer;
@@ -55,5 +57,7 @@ bool dvdType::operator>=(const dvdType& right) const
 {
  return (dvdTitle >= right.dvdTitle);
 }
+
+dvdType::dvdType() {}
 
 #endif
