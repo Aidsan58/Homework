@@ -21,7 +21,7 @@ int main()
         }
         else break;
     }
-    
+    std::cout << myCustomer.getNumItemsRented();
 
 
 return 0;

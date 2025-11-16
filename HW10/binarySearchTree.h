@@ -34,7 +34,7 @@ template <class elemType>
 void bSearchTreeType<elemType>::insert
  (const elemType& insertItem)
 {
- nodeType<elemType> *root = this->root;
+ //nodeType<elemType> *root = this->root;
  nodeType<elemType> *current; //pointer to traverse the tree
  nodeType<elemType> *trailCurrent = nullptr; //pointer behind current
  nodeType<elemType> *newNode; //pointer to create the node
@@ -42,11 +42,11 @@ void bSearchTreeType<elemType>::insert
  newNode->info = insertItem;
  newNode->lLink = nullptr;
  newNode->rLink = nullptr;
- if (root == nullptr)
- root = newNode;
+ if (this->root == nullptr) // now root is used directly so nodeCount doesn't keep returning zero
+ this->root = newNode;
  else
  {
- current = root;
+ current = this->root;
  while (current != nullptr)
  {
  trailCurrent = current;

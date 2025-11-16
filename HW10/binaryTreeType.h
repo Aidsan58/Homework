@@ -217,21 +217,12 @@ int binaryTreeType<elemType>::max(int x, int y) const
  //Postcondition: The number of nodes in the binary
  // tree to which p points is returned.
 template <class elemType>
-int binaryTreeType<elemType>::nodeCount
- (nodeType<elemType> *p) const
+int binaryTreeType<elemType>::nodeCount(nodeType<elemType>* p) const
 {
-int nodeCount = 0;
-elemType *myRoot = p;
-while (p != nullptr) {
-    p = p->lLink;
-    nodeCount += 1;
- }
- p = myRoot;
- while (p != nullptr) {
-    p = p->lLink;
-    nodeCount += 1;
- }
- return nodeCount;
+    if (p == nullptr)
+        return 0;
+    else
+        return 1 + nodeCount(p->lLink) + nodeCount(p->rLink);
 }
 
 #endif
