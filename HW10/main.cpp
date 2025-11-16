@@ -11,6 +11,7 @@
 #include "binarySearchTree.h"
 #include "dvdType.h"
 #include "dvdBinaryTree.h"
+#include "customerBinaryTreeType.h"
 using namespace std;
 void createDVDList(ifstream& infile,
  dvdBinaryTree& dvdList);

@@ -1,4 +1,7 @@
- //Definition of the node
+#ifndef BINARY_SEARCH_TREE_H
+#define BINARY_SEARCH_TREE_H
+
+//Definition of the node
 template <class elemType>
 struct nodeType
 {
@@ -122,3 +125,5 @@ private:
  //Postcondition: The number of leaves in the binary
  // tree to which p points is returned.
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef DVD_TYPE_H
+#define DVD_TYPE_H
+
 #include <iostream>
 using namespace std;
 
@@ -38,3 +41,5 @@ private:
  string movieProductionCo;
  int copiesInStock;
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef DVD_BINARY_TREE_H
+#define DVD_BINARY_TREE_H
+
 #include "binarySearchTree.h"
 #include "dvdType.h"
 
@@ -54,3 +57,5 @@ private:
  //This function prints the titles of all the DVDs
  //in stock.
 };
+
+#endif

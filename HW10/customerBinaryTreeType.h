@@ -1,3 +1,6 @@
+#ifndef CUSTOMER_BINARY_TREE_TYPE_H
+#define CUSTOMER_BINARY_TREE_TYPE_H
+
 #include "binarySearchTree.h"
 
 template <class elemType>
@@ -11,3 +14,5 @@ class customerBTreeType: public bSearchTreeType<elemType>
  // allows the customer to return a DVD. uses deleteNode
  void returnItem(const elemType& deleteItem);
 };
+
+#endif

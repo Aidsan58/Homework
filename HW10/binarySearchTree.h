@@ -1,3 +1,6 @@
+#ifndef BINARY_SEARCH_TREE_H
+#define BINARY_SEARCH_TREE_H
+
 #include "binaryTreeType.h"
 
 template <class elemType>
@@ -32,3 +35,5 @@ private:
  //Postcondition: The node to which p points is
  // deleted from the binary search tree.
 };
+
+#endif
