@@ -10,4 +10,3 @@ struct HashSet {
     void hashInsert(std::unordered_set<std::string> hashSet, std::string entry); // Insert function
 
 };
-

@@ -36,7 +36,7 @@ Node* Trie::findSibling(Node* node, char c) {
 std::vector<std::string> Trie::suggest(const std::string& prefix) {
 std::vector<std::string> results;
 
-Node* node = searchPrefix(root, prefix);
+Node* node = searchPrefix(prefix);
 if (!node) return results;
 
 collectWords(node->child, prefix, results);
