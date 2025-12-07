@@ -1,6 +1,8 @@
 #include "heap.h"
 
-// Here we sort the five (or fewer) suggestions so that they are in alphabetical order
+// Here we sort the five (or fewer) suggestions so that they are in alphabetical order.
+// https://www.geeksforgeeks.org/dsa/heap-sort/ was inspiration for algorithm implementation.
+// I was able to implement something very similar for std::string as for int, since std::string has built-in overloaded comparison operators.
 void Heap::heapify(std::vector<std::string>& suggestion, int n, int i) {
     
     // initialize largest as root
