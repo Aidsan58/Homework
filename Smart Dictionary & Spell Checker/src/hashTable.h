@@ -1,12 +1,12 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
-
-#include <map>
 #include <unordered_set>
+#include <string>
 
 struct HashSet {
-    void hashInsert(std::unordered_set<std::string> hashSet, std::string entry); // Insert function
+    std::unordered_set<std::string> table;   // store the words
 
+    void hashInsert(const std::string& entry);
+    bool spellCheck(const std::string& word);
 };

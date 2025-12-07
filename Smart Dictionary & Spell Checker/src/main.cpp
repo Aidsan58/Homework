@@ -17,8 +17,9 @@ int main() {
     Heap heap;
 
     loadFile("dictionary.txt", set, trie);
-    std::vector<std::string> suggestion = trie.suggest("app");
+    std::vector<std::string> suggestion = trie.suggest("exx");
     heap.heapSort(suggestion);
+    heap.printHeap(suggestion);
 
     return 0;
 }

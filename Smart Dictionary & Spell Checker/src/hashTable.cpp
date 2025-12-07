@@ -1,5 +1,9 @@
 #include "hashTable.h"
 
-void HashSet::hashInsert(std::unordered_set<std::string> hashSet, std::string entry) {
-    hashSet.insert(entry); // Uses built-in insert function, but we make our own so inserting in the hash table doesn't get mixed up with inserting in the Trie.
+void HashSet::hashInsert(const std::string& entry) {
+    table.insert(entry);    // insert into the member hash table, insert() does the same thing but we want to write to the table that the class 'owns'
+}
+
+bool HashSet::spellCheck(const std::string& word) {
+    return table.find(word) != table.end();
 }
