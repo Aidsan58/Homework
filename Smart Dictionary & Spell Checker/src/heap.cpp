@@ -47,6 +47,7 @@ void Heap::heapSort(std::vector<std::string>& suggestion) {
 }
 
 void Heap::printHeap(std::vector<std::string>& suggestion) {
+    heapSort(suggestion); // runs heap sort
     std::cout << "Here is the list of suggestions: " << std::endl;
     for (int i = 0; i < suggestion.size(); i++) {
         std::cout << suggestion[i] << std::endl;
