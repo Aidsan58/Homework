@@ -24,14 +24,14 @@ public:
     Node* root;
 
     Trie() {
-        root = new Node('origin');
+        root = new Node('0');
     }
 
     void insert(const std::string& word);
     Node* findSibling(Node* node, char c);
-    Node* Trie::searchPrefix(const std::string& prefix);
+    Node* searchPrefix(const std::string& prefix);
     void collectWords(Node* node,std::string current, std::vector<std::string>& results);
-    std::vector<std::string> Trie::suggest(const std::string& prefix);
+    std::vector<std::string> suggest(const std::string& prefix);
 
 
 
