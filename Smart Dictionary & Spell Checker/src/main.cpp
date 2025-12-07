@@ -32,11 +32,9 @@ void loadFile(const std::string& filename, HashSet& set, Trie& trie) {
         return; // return early if we don't have a valid file or there is some other issue
     }
 
-    std::unordered_set<std::string> hashSet; // hash set that we use to write to our class
-
     std::string line;
     while (std::getline(inputFile, line)) {
-        set.hashInsert(hashSet, line);
+        set.hashInsert(line);
         trie.insert(line);
     }
 }
