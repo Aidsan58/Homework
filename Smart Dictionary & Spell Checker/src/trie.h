@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 struct Node {
     char letter;
@@ -26,37 +27,12 @@ public:
         root = new Node('origin');
     }
 
-    void insert(const std::string& word) {
-        Node* current = root;
+    void insert(const std::string& word);
+    Node* findSibling(Node* node, char c);
+    Node* Trie::searchPrefix(const std::string& prefix);
+    void collectWords(Node* node,std::string current, std::vector<std::string>& results);
+    std::vector<std::string> Trie::suggest(const std::string& prefix);
 
-        for (char c : word) {
-            if (!current->child) {
-                current->child = new Node(c);
-                current = current->child; // current node is now the child that the node was pointing to
-            }
-            else {
-                current = findSibling(current->child, c);
-            }
-        }
-        current->isEndOfWord = true; // when the for loop is done, we quality the last node with a 'true' which says that character is the end of the word
-    }
 
-    Node* findSibling(Node* node, char c) {
-        Node* previous = nullptr;
-        Node* current = node;
-
-        while (current && current->letter != c) {
-            previous = current;
-            current = current->sibling;
-        }
-
-        if (current) {
-            return current;
-        }
-
-        current = new Node(c); // if not found we make a new sibling
-        previous->sibling = current;
-        return current;
-    }
 
 }
