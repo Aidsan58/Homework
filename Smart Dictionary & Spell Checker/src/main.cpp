@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <unordered_set>
-#include <fstream>
+#include <fstream> // for file reading
+#include <cstdlib> // for exit()
 #include "trie.h"
 #include "hashTable.h"
 #include "heap.h"
@@ -15,11 +16,9 @@ int main() {
     
     HashSet set;
     Trie trie;
-    Heap heap;
 
-    loadFile("dictionary.txt", set, trie);
-    std::vector<std::string> suggestion = trie.suggest("app");
-    heap.printHeap(suggestion);
+    //loadFile("dictionary.txt", set, trie);
+    
 
     return 0;
 }
@@ -64,67 +63,58 @@ void processUserInput(HashSet& set, Trie& trie) {
     }
 
     // CHECK [word]
-    if (command.rfind("LOAD ", 0) == 0) {
-        std::string filename = input.substr(5); // the filename should be the characters after "LOAD "
+    if (command.rfind("CHECK ", 0) == 0) {
+        std::string word = input.substr(6); // the word should be the characters after "CHECK "
 
-        // trim filename
-        filename.erase(0, filename.find_first_not_of("\t"));
-        filename.erase(filename.find_first_not_of("\t") + 1);
+        // trim word
+        word.erase(0, word.find_first_not_of("\t"));
+        word.erase(word.find_first_not_of("\t") + 1);
 
-        if (filename.empty()) {
-            std::cerr << "No filename found." << std::endl;
+        if (set.spellCheck(word) == false) {
+            std::cout << "❌ [word] is misspelled." << std::endl;
+            return;
+        }
+        if (set.spellCheck(word) == true) {
+            std::cout << "✅ [word] is spelled correctly." << std::endl;
             return;
         }
 
-        loadFile(filename, set, trie);
+
     }
 
     // SUGGEST [prefix]
-    if (command.rfind("LOAD ", 0) == 0) {
-        std::string filename = input.substr(5); // the filename should be the characters after "LOAD "
+    if (command.rfind("SUGGEST ", 0) == 0) {
+        std::string prefix = input.substr(8); // the suggestion should be the characters after "SUGGEST "
 
-        // trim filename
-        filename.erase(0, filename.find_first_not_of("\t"));
-        filename.erase(filename.find_first_not_of("\t") + 1);
+        // trim prefix
+        prefix.erase(0, prefix.find_first_not_of("\t"));
+        prefix.erase(prefix.find_first_not_of("\t") + 1);
 
-        if (filename.empty()) {
-            std::cerr << "No filename found." << std::endl;
-            return;
-        }
+        Heap heap; // make a heap for the suggestions
 
-        loadFile(filename, set, trie);
+        std::vector<std::string> suggestion = trie.suggest(prefix); // write suggestions to the heap
+
+        heap.printHeap(suggestion); // prints suggestions
+
+        return;
+
     }
 
     // HELP
-    if (command.rfind("LOAD ", 0) == 0) {
-        std::string filename = input.substr(5); // the filename should be the characters after "LOAD "
+    if (command.rfind("HELP", 0) == 0) {
+        std::cout << "Here is a list of commands: " << std::endl;
 
-        // trim filename
-        filename.erase(0, filename.find_first_not_of("\t"));
-        filename.erase(filename.find_first_not_of("\t") + 1);
+        std::cout << "LOAD [filename]: Load dictionary data from a specified text file (see Section III) into both the Trie and the Hash Table.\nCHECK [word]:\
+         Perform a spell check.\
+         \nSUGGEST [prefix]: Use the Trie to find and print up to 5 suggested words that start with the given prefix.\nHELP: Display a list of available commands.\nEXIT: \
+         Terminate the program." << std::endl;
 
-        if (filename.empty()) {
-            std::cerr << "No filename found." << std::endl;
-            return;
-        }
-
-        loadFile(filename, set, trie);
+         return;
     }
 
     // EXIT
-    if (command.rfind("LOAD ", 0) == 0) {
-        std::string filename = input.substr(5); // the filename should be the characters after "LOAD "
-
-        // trim filename
-        filename.erase(0, filename.find_first_not_of("\t"));
-        filename.erase(filename.find_first_not_of("\t") + 1);
-
-        if (filename.empty()) {
-            std::cerr << "No filename found." << std::endl;
-            return;
-        }
-
-        loadFile(filename, set, trie);
+    if (command.rfind("EXIT", 0) == 0) {
+        exit(0);
     }
 
     else 
