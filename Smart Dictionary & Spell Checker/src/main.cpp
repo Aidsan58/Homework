@@ -18,7 +18,10 @@ int main() {
     Trie trie;
 
     //loadFile("dictionary.txt", set, trie);
-    
+
+    while (true) {
+        processUserInput(set, trie);
+    }
 
     return 0;
 }
@@ -51,8 +54,8 @@ void processUserInput(HashSet& set, Trie& trie) {
         std::string filename = input.substr(5); // the filename should be the characters after "LOAD "
 
         // trim filename
-        filename.erase(0, filename.find_first_not_of("\t"));
-        filename.erase(filename.find_first_not_of("\t") + 1);
+        //filename.erase(0, filename.find_first_not_of(" \t"));
+        //filename.erase(filename.find_first_not_of(" \t") + 1);
 
         if (filename.empty()) {
             std::cerr << "No filename found." << std::endl;
@@ -63,19 +66,19 @@ void processUserInput(HashSet& set, Trie& trie) {
     }
 
     // CHECK [word]
-    if (command.rfind("CHECK ", 0) == 0) {
+    else if (command.rfind("CHECK ", 0) == 0) {
         std::string word = input.substr(6); // the word should be the characters after "CHECK "
 
         // trim word
-        word.erase(0, word.find_first_not_of("\t"));
-        word.erase(word.find_first_not_of("\t") + 1);
+        //word.erase(0, word.find_first_not_of(" \t"));
+        //word.erase(word.find_first_not_of(" \t") + 1);
 
         if (set.spellCheck(word) == false) {
-            std::cout << "❌ [word] is misspelled." << std::endl;
+            std::cout <<  word << " is misspelled." << std::endl;
             return;
         }
         if (set.spellCheck(word) == true) {
-            std::cout << "✅ [word] is spelled correctly." << std::endl;
+            std::cout << word << " is spelled correctly." << std::endl;
             return;
         }
 
@@ -83,12 +86,12 @@ void processUserInput(HashSet& set, Trie& trie) {
     }
 
     // SUGGEST [prefix]
-    if (command.rfind("SUGGEST ", 0) == 0) {
+    else if (command.rfind("SUGGEST ", 0) == 0) {
         std::string prefix = input.substr(8); // the suggestion should be the characters after "SUGGEST "
 
         // trim prefix
-        prefix.erase(0, prefix.find_first_not_of("\t"));
-        prefix.erase(prefix.find_first_not_of("\t") + 1);
+        //prefix.erase(0, prefix.find_first_not_of(" \t"));
+        //prefix.erase(prefix.find_first_not_of(" \t") + 1);
 
         Heap heap; // make a heap for the suggestions
 
@@ -101,19 +104,20 @@ void processUserInput(HashSet& set, Trie& trie) {
     }
 
     // HELP
-    if (command.rfind("HELP", 0) == 0) {
+    else if (command.rfind("HELP", 0) == 0) {
         std::cout << "Here is a list of commands: " << std::endl;
 
         std::cout << "LOAD [filename]: Load dictionary data from a specified text file (see Section III) into both the Trie and the Hash Table.\nCHECK [word]:\
-         Perform a spell check.\
-         \nSUGGEST [prefix]: Use the Trie to find and print up to 5 suggested words that start with the given prefix.\nHELP: Display a list of available commands.\nEXIT: \
-         Terminate the program." << std::endl;
+ Perform a spell check.\
+\nSUGGEST [prefix]: Use the Trie to find and print up to 5 suggested words that start with the given prefix.\nHELP: Display a list of available commands.\nEXIT: \
+Terminate the program." << std::endl;
 
          return;
     }
 
     // EXIT
-    if (command.rfind("EXIT", 0) == 0) {
+    else if (command.rfind("EXIT", 0) == 0) {
+        std::cout << "Exiting program." << std::endl;
         exit(0);
     }
 
